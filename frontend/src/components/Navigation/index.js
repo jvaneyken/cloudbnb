@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import './Navigation.css';
+import { FaAirbnb } from 'react-icons/fa';
 
 function Navigation() {
   const sessionUser = useSelector(state => state.session.user);
@@ -23,9 +24,16 @@ function Navigation() {
   }
 
   return (
-    <ul>
+    <ul >
       <li>
-        <NavLink exact to="/">Home</NavLink>
+          <NavLink exact to="/">
+            <div className='logo-div'>
+              <FaAirbnb className='logo'/>
+              <p>cloudbnb</p>
+            </div>
+          </NavLink>
+      </li>
+      <li>
         {sessionLinks}
       </li>
     </ul>

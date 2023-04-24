@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
+import { FaUserCircle } from 'react-icons/fa';
+import { GiHamburgerMenu } from 'react-icons/gi';
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -31,9 +33,8 @@ function ProfileButton({ user }) {
   return (
     <>
       <button onClick={openMenu}>
-        <div className="profile">
-            <i className="fa-solid fa-circle-user" />
-        </div>
+        <GiHamburgerMenu />
+        <FaUserCircle className="profile-icon"/>
       </button>
       {showMenu && (
         <ul className="profile-dropdown">

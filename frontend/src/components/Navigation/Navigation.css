@@ -1,27 +1,26 @@
-/* * {
-    border: 1px solid red;
+ul {
+    display: flex;
+    justify-content: space-between;
 }
 
-.fa-user {
-    background-color: blue;
-    color: red;
-    width: 600px;
-    height: 200px;
-    border: 1px solid green;
+.logo-div {
+    display: flex;
+    align-items: center;
+    color: #1FBEFF;
 }
 
-.fa-solid {
-    background-color: blue;
-    color: red;
-    width: 600px;
-    height: 200px;
-    border: 1px solid green;
-} */
+.logo {
+    width: 32px;
+    height: 32px;
+}
 
-/* .profile {
+.logo-div p {
+    font-weight: 900;
+    font-size: 24px;
+    font-family:  -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;;
+}
+
+.profile-icon {
     width: 20px;
     height: 20px;
-    color: green;
-    background-color: red;
-    border-radius: 10px;
-} */
+}
