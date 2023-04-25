@@ -9,20 +9,6 @@ import { FaAirbnb } from 'react-icons/fa';
 function Navigation() {
   const sessionUser = useSelector(state => state.session.user);
 
-  let sessionLinks;
-  if (sessionUser) {
-    sessionLinks = (
-      <ProfileButton user={sessionUser} />
-    );
-  } else {
-    sessionLinks = (
-      <>
-        <LoginFormModal />
-        <NavLink to="/signup">Sign Up</NavLink>
-      </>
-    );
-  }
-
   return (
     <ul >
       <li>
@@ -34,7 +20,7 @@ function Navigation() {
           </NavLink>
       </li>
       <li>
-        {sessionLinks}
+      <ProfileButton user={sessionUser} />
       </li>
     </ul>
   );
