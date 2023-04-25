@@ -1,6 +1,15 @@
 ul {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    height: 75px;
+    border-bottom: 1px solid lightgrey;
+}
+
+ul li {
+    width: 300px;
+    display: flex;
+    justify-content: center;
 }
 
 .logo-div {
@@ -10,17 +19,12 @@ ul {
 }
 
 .logo {
-    width: 32px;
-    height: 32px;
+   font-size: 36px;
 }
 
 .logo-div p {
-    font-weight: 900;
+    font-weight: 700;
     font-size: 24px;
     font-family:  -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;;
 }
 
-.profile-icon {
-    width: 20px;
-    height: 20px;
-}

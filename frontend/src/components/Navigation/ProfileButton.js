@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
 import { FaUserCircle } from 'react-icons/fa';
 import { GiHamburgerMenu } from 'react-icons/gi';
+import './ProfileButton.css'
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -32,9 +33,9 @@ function ProfileButton({ user }) {
 
   return (
     <>
-      <button onClick={openMenu}>
-        <GiHamburgerMenu />
-        <FaUserCircle className="profile-icon"/>
+      <button className="profile-button" onClick={openMenu}>
+        <GiHamburgerMenu id="hamburger-menu"/>
+        <FaUserCircle id="profile-icon"/>
       </button>
       {showMenu && (
         <ul className="profile-dropdown">

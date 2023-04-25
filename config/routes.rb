@@ -14,4 +14,6 @@ Rails.application.routes.draw do
     # resources :reviews
   end
 
+  get '*path', to: 'static_pages#frontend'
+
 end
