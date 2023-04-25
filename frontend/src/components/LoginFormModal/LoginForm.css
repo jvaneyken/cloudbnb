@@ -1,0 +1,24 @@
+.login-form-content {
+    background-color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 500px;
+  }
+
+.login-form-content h1 {
+    border-bottom: 1px solid lightgrey;
+  }
+
+.login-form-content form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+.login-form-content button {
+    background-color: #1FBEFF;
+    color: white;
+    border-radius: 3px;
+  }
