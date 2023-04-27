@@ -4,12 +4,23 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 500px;
+    width: 400px;
+    
   }
 
 .login-form-content h1 {
-    border-bottom: 1px solid lightgrey;
+    /* border-bottom: 1px solid lightgrey; */
   }
+
+.errors-ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.errors-ul:empty {
+  display: none;
+}
 
 .login-form-content form {
     display: flex;
@@ -17,8 +28,30 @@
     justify-content: center;
   }
 
+.login-form-content form label {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    /* width: 400px; */
+  }
+
+.login-form-content form label input {
+    width: 400px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid lightgrey;
+  }
+
 .login-form-content button {
     background-color: #1FBEFF;
     color: white;
     border-radius: 3px;
+    height: 32px;
+    padding-top: 5px;
   }
+
+#demo-button {
+  width: 408px;
+  height: 32px;
+  margin-top: 10px;
+  border-radius: 3px;
+}

@@ -36,7 +36,7 @@ function LoginForm() {
     <div className="login-form-content">
       <h1>Log in or sign up</h1>
         <form onSubmit={handleSubmit}>
-          <ul>
+          <ul className="errors-ul">
             {errors.map(error => <li key={error}>{error}</li>)}
           </ul>
           <label>
@@ -61,7 +61,7 @@ function LoginForm() {
           </label>
           <button type="submit">Log In</button>
         </form>
-        <button onClick={demoUserSubmit}>Log in with Demo Account</button>
+        <button id="demo-button" onClick={demoUserSubmit}>Log in with Demo Account</button>
     </div>
       
     </>

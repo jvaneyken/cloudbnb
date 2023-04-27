@@ -31,6 +31,20 @@ ApplicationRecord.transaction do
         password: 'password'
       }) 
     end
+
+    puts "Creating listings..."
+    number = 0
+    20.times do
+      Listing.create!({
+        heading: "Test Listing #{number += 1}",
+        location: "San Francisco, California, United States",
+        price: rand(100..3000),
+        num_guests: rand(1..10),
+        num_bedrooms: rand(1..5),
+        num_beds: rand(1..10),
+        num_baths: rand(1..5),
+      })
+    end
   
     puts "Done!"
   end
