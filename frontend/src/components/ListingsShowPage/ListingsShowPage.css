@@ -1,0 +1,90 @@
+.listing-container div {
+    /* border: 1px solid black; */
+}
+
+.listing-container img {
+    max-width: 100%;
+    display: block;
+}
+
+.listing-container {
+    display: flex;
+    justify-content: center;
+    font-family:  -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+}
+
+.listing-container > div {
+    width: 60%;
+}
+
+.listing-heading-div {
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.listing-p-div {
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.listing-image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: .5rem;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.listing-image-div {
+    aspect-ratio: 1 / 1;
+}
+
+.listing-image-div.featured {
+    grid-row: span 2;
+    grid-column: span 2;
+}
+
+.listing-image {
+    /* width: 25%; */
+    /* height: 259px; */
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+}
+
+.listing-details-container {
+    width: 60%;
+    border-bottom: 1px solid lightgrey;
+}
+
+.listing-details-div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.listing-details-title {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#listing-profile-icon {
+    font-size: 50px;
+}
+
+.listing-details {
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+
+
+
+
+
+
+
+

@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import SignupFormPage from './components/SignupFormPage';
 import Navigation from './components/Navigation';
 import ListingsIndexPage from './components/ListingsIndexPage';
+import ListingsShowPage from './components/ListingsShowPage';
 
 function App() {
   return (
@@ -14,6 +15,9 @@ function App() {
           </Route>
           <Route exact path="/">
             <ListingsIndexPage />
+          </Route>
+          <Route exact path='/listings/:listingId'>
+            <ListingsShowPage />
           </Route>
         </Switch>
     </>

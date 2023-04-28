@@ -2,30 +2,33 @@
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    margin-top: 20px;
+    margin-top: 50px;
     margin-left: 100px;
     font-family:  -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
-    font-weight: 200;
-
+    font-weight: 300;
 }
 
-.listing-div {
+.listings-div {
     width: 16.6%;
     min-width: 250px;
     height: 257px;
-    font-size: 12px;
+    font-size: 15px;
 }
 
-.listing-div span {
-    font-weight: 400;
+.listings-div span {
+    font-weight: 500;
 }
 
-.listing-div p {
+.listings-div p {
     margin-top: 10px;
 }
 
-.listing-image {
+.listings-image {
     width: 100%;
     height: 200px;
     border-radius: 10px;
+}
+
+.listings-details {
+    margin-top: 5%;
 }
