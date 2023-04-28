@@ -54,9 +54,15 @@
     object-fit: cover;
 }
 
+.listing-details-parent {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+}
+
 .listing-details-container {
-    width: 60%;
+    width: 85%;
     border-bottom: 1px solid lightgrey;
+    border: 1px solid red;
 }
 
 .listing-details-div {
@@ -64,7 +70,9 @@
     justify-content: space-between;
     align-items: center;
     margin-top: 50px;
+    border: 2px solid blue;
 }
+
 
 .listing-details-title {
     font-size: 20px;
@@ -78,6 +86,13 @@
 .listing-details {
     margin-top: 10px;
     margin-bottom: 30px;
+    border: 1px solid green;
+}
+
+.reservation-form-container {
+    margin-top: 20px;
+    border: 1px solid lightgrey;
+    border-radius: 10px;
 }
 
 

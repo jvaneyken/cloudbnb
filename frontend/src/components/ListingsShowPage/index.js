@@ -5,6 +5,7 @@ import './ListingsShowPage.css'
 import placeHolderImage from '../../assets/deric-0zy0QwHwZy8-unsplash.jpg'
 import { useParams } from "react-router-dom";
 import { FaUserCircle } from 'react-icons/fa';
+import ReservationForm from "./ReservationForm";
 
 
 const ListingsShowPage = () => {
@@ -46,21 +47,28 @@ const ListingsShowPage = () => {
                             <img className="listing-image  bottom-right" src={placeHolderImage} alt="placeholder"/>
                         </div>
                     </div>
-                    <div className="listing-details-container">
-                        <div className="listing-details-div">
-                            <div>
-                                <h1 className="listing-details-title">Entire property hosted by "Fake name"</h1>
-                                <div className="listing-details">    
-                                    <span>{listing.numGuests} guests</span>
-                                    <span>&#x2022;</span>
-                                    <span>{listing.numBedrooms} bedrooms</span>
-                                    <span>&#x2022;</span>
-                                    <span>{listing.numBeds} beds</span>
-                                    <span>&#x2022;</span>
-                                    <span>{listing.numBaths} baths</span>
+                    <div className="listing-details-parent">
+                        <div className="listing-details-container">
+                            <div className="listing-details-div">
+                                <div>
+                                    <h1 className="listing-details-title">Entire property hosted by "Fake name"</h1>
+                                    <div className="listing-details">    
+                                        <span>{listing.numGuests} guests</span>
+                                        <span>&#x2022;</span>
+                                        <span>{listing.numBedrooms} bedrooms</span>
+                                        <span>&#x2022;</span>
+                                        <span>{listing.numBeds} beds</span>
+                                        <span>&#x2022;</span>
+                                        <span>{listing.numBaths} baths</span>
+                                    </div>
                                 </div>
+                                <div><FaUserCircle id="listing-profile-icon"/></div>
                             </div>
-                            <div><FaUserCircle id="listing-profile-icon"/></div>
+                        </div>
+                        <div>
+                            <div className="reservation-form-container">
+                                <ReservationForm />
+                            </div>
                         </div>
                     </div>
                 </div>

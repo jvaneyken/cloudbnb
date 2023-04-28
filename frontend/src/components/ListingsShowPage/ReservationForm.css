@@ -1,0 +1,30 @@
+.outer-div {
+    padding: 30px;
+}
+
+.reservation-form-price-reviews {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+
+.outer-div form {
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+}
+
+.outer-div form button {
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    background-color: #1FBEFF;
+    color: white;
+    border-radius: 5px;
+    margin-top: 15px;
+}
+
+.reservation-form-b-b-c {
+    display: flex;
+    justify-content: space-between;
+}
