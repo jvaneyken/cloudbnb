@@ -16,9 +16,10 @@ const ReservationForm = ({ listing }) => {
 
 
     const handleClick = () => {
-        dispatch(createReservation({ userId, checkInDate, checkOutDate, numGuests, listingId: listing.id}));
+        dispatch(createReservation({ userId, checkInDate, checkOutDate, numGuests, listingId: listing.id }));
     }
     // :id, :user_id, :check_in_date, :check_out_date, :num_guests, :listing_id
+    // :user_id, :check_in_date, :check_out_date, :num_guests, :listing_id
 
     return(
         <>
