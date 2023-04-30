@@ -47,6 +47,8 @@ ApplicationRecord.transaction do
         num_baths: rand(1..5),
       })
     end
+
+    
   
     puts "Done!"
   end

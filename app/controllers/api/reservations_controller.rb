@@ -1,5 +1,7 @@
 class Api::ReservationsController < ApplicationController
 
+    before_action :require_logged_in
+
     def index
         @reservations = Reservation.where(user_id: current_user.id)
         render :index
@@ -20,11 +22,20 @@ class Api::ReservationsController < ApplicationController
     end
 
     def update
+        @reservation = Reservation.find(params[:id])
+        if @reservation.save
+            render :show
+        else
+            render json: {errors: @reservation.errors.full_messages }
+        end
 
     end
 
     def destroy
-
+        @reservation = Reservation.find(params[:id])
+        @reservation.destroy
+        render :index
+    
     end
 
     private 

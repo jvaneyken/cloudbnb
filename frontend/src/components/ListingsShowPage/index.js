@@ -67,7 +67,7 @@ const ListingsShowPage = () => {
                         </div>
                         <div>
                             <div className="reservation-form-container">
-                                <ReservationForm />
+                                <ReservationForm listing={listing}/>
                             </div>
                         </div>
                     </div>
