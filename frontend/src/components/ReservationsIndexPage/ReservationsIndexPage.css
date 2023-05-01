@@ -1,0 +1,66 @@
+.reservations-container {
+    display: flex;
+    justify-content: center;
+    border: 1px solid black;
+}
+
+.reservations-container > div {
+    width: 89%;
+}
+
+
+/* No trips header  */
+
+.no-trips-header {
+    border: 1px solid lightgrey;
+    border-radius: 10px;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: repeat(3,minmax(0,1fr));
+    column-gap: 16px;
+    /* height: 270px; */
+}
+
+.hidden {
+    display: none;
+}
+
+.no-trips-content {
+    
+    padding: 32px;
+    
+}
+
+.no-trips-content div {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.no-trips-header-image {
+    /* padding: 20em; */
+    background-image: url("../../assets/airbnb_reservations_image2.jpg");
+    background-repeat: no-repeat;
+}
+
+/* Reservations */
+
+.reservations-div {
+    border: 1px solid lightgrey;
+    display: flex;
+}
+
+.reservations-div-image img {
+    width: 10em;
+    border-radius: 10px;
+}
+
+.reservations-div button {
+    background-color: #1FBEFF;
+
+}
+
+.reservations-div button:active {
+    background-color: #1888b4;
+    
+}
+

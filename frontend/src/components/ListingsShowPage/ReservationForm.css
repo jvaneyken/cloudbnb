@@ -24,6 +24,10 @@
     margin-top: 15px;
 }
 
+.outer-div form button:active {
+    background-color: #1888b4;
+}
+
 .reservation-form-b-b-c {
     display: flex;
     justify-content: space-between;
