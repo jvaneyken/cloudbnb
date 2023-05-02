@@ -32,7 +32,7 @@ const ListingsShowPage = () => {
                     </div>
                     <div className="listing-image-grid">
                         <div className="listing-image-div featured">
-                            <img src={placeHolderImage} alt="placeholder" className="listing-image left"/>
+                            <img src={listing.photoUrls[0]} alt="placeholder" className="listing-image left"/>
                         </div>
                         <div className="listing-image-div disappear">
                             <img className="listing-image" src={placeHolderImage} alt="placeholder"/>

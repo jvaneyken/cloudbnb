@@ -53,13 +53,13 @@ ApplicationRecord.transaction do
     puts "Done!"
   end
 
-  # Listing.all.each_with_index do |listing, index|
-  #   listing.photos.attach(
-  #     # The string passed to URI.open should be the URL of the image in its bucket.
-  #     # This sample assumes the bucket name is `benchbnb-seeds`.
-  #     io: URI.open("https://cloudbnb-seeds.s3.us-west-1.amazonaws.com/placeholderImage/deric-0zy0QwHwZy8-unsplash.jpg"), 
-  #     filename: "placeholderImage/deric-0zy0QwHwZy8-unsplash.jpg"
-  #   )
-  # end
+  Listing.all.each_with_index do |listing, index|
+    listing.photos.attach(
+      # The string passed to URI.open should be the URL of the image in its bucket.
+      # This sample assumes the bucket name is `benchbnb-seeds`.
+      io: URI.open("https://cloudbnb-seeds.s3.us-west-1.amazonaws.com/placeholderImage/deric-0zy0QwHwZy8-unsplash.jpg"), 
+      filename: "placeholderImage/deric-0zy0QwHwZy8-unsplash.jpg"
+    )
+  end
 
   

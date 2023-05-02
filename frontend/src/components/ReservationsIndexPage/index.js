@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchReservations, deleteReservation } from "../../store/reservations";
-import { fetchListings } from "../../store/listings";
 import './ReservationsIndexPage.css'
 // import reservationsImage from '../../assets/airbnb_reservations_image2.jpg';
 import placeHolderImage from '../../assets/deric-0zy0QwHwZy8-unsplash.jpg';
