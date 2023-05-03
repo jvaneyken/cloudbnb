@@ -19,7 +19,7 @@ const ListingsIndexPage = () => {
                     <Link to={`listings/${listing.id}`}  key={listing.id}>
                         <div className="listings-div">
                             {/* <img src={listing.photoUrls[0]} className="listing-image" alt="placeholder" /> */}
-                            <img src={placeHolderImage} className="listings-image" alt="placeholder"/>
+                            <img src={listing.photoUrls[0]} className="listings-image" alt="placeholder"/>
                             <div className="listings-details">
                                 <p><span>{listing.location}</span></p>
                                 <p><span>${listing.price}</span> night</p>

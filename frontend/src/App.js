@@ -4,6 +4,7 @@ import SignupFormPage from './components/SignupFormPage';
 import Navigation from './components/Navigation';
 import ListingsIndexPage from './components/ListingsIndexPage';
 import ListingsShowPage from './components/ListingsShowPage';
+import ReservationsIndexPage from './components/ReservationsIndexPage';
 
 function App() {
   return (
@@ -18,6 +19,9 @@ function App() {
           </Route>
           <Route exact path='/listings/:listingId'>
             <ListingsShowPage />
+          </Route>
+          <Route exact path='/reservations'>
+            <ReservationsIndexPage />
           </Route>
         </Switch>
     </>

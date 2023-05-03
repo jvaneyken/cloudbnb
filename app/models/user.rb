@@ -16,6 +16,9 @@ class User < ApplicationRecord
     length: { in: 6..255 },
     allow_nil: true
 
+  has_many :reservations,
+    dependent: :destroy
+
   before_validation :ensure_session_token
 
   def self.find_by_credentials(credential, password)

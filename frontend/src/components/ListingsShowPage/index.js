@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchListing } from "../../store/listings";
 import './ListingsShowPage.css'
@@ -12,10 +12,15 @@ const ListingsShowPage = () => {
     const dispatch = useDispatch();
     const { listingId } = useParams();
     const listing = useSelector(state => state.listings[listingId]);
+    const [i, setI] = useState(0);
 
     useEffect(()=> {
         dispatch(fetchListing(listingId));
     }, [dispatch, listingId])
+
+    const handleImageClick = (index) => {
+        setI(index + i)
+    }
 
     if (!listing) {
         return null;
@@ -32,19 +37,19 @@ const ListingsShowPage = () => {
                     </div>
                     <div className="listing-image-grid">
                         <div className="listing-image-div featured">
-                            <img src={placeHolderImage} alt="placeholder" className="listing-image left"/>
+                            <img onClick={()=> handleImageClick(0)} src={listing.photoUrls[(i + 0) % 5]} alt="placeholder" className="listing-image left"/>
                         </div>
                         <div className="listing-image-div disappear">
-                            <img className="listing-image" src={placeHolderImage} alt="placeholder"/>
+                            <img onClick={()=> handleImageClick(1)} className="listing-image" src={listing.photoUrls[(i + 1) % 5]} alt="placeholder"/>
                         </div>
                         <div className="listing-image-div disappear">
-                            <img className="listing-image  top-right" src={placeHolderImage} alt="placeholder"/>
+                            <img onClick={()=> handleImageClick(2)} className="listing-image  top-right" src={listing.photoUrls[(i + 2) % 5]} alt="placeholder"/>
                         </div>
                         <div className="listing-image-div disappear">
-                            <img className="listing-image" src={placeHolderImage} alt="placeholder"/>
+                            <img onClick={()=> handleImageClick(3)} className="listing-image" src={listing.photoUrls[(i + 3) % 5]} alt="placeholder"/>
                         </div>
                         <div className="listing-image-div disappear">
-                            <img className="listing-image  bottom-right" src={placeHolderImage} alt="placeholder"/>
+                            <img onClick={()=> handleImageClick(4)} className="listing-image  bottom-right" src={listing.photoUrls[(i + 4) % 5]} alt="placeholder"/>
                         </div>
                     </div>
                     <div className="listing-details-parent">
@@ -67,7 +72,7 @@ const ListingsShowPage = () => {
                         </div>
                         <div>
                             <div className="reservation-form-container">
-                                <ReservationForm />
+                                <ReservationForm listing={listing}/>
                             </div>
                         </div>
                     </div>
