@@ -32,8 +32,9 @@ const ReservationsIndexPage = () => {
     return(
             <>
             {showModal && (
-
-                <ReservationsEditModal currentReservation={currentReservation}/> 
+                <ReservationsEditModal 
+                currentReservation={currentReservation}
+                closeModal={()=> setShowModal(false)} /> 
             )}
                 <div className="reservations-container" >
                     <div>
@@ -57,12 +58,16 @@ const ReservationsIndexPage = () => {
                                     <div className="reservations-div-image">
                                         <img src={placeHolderImage} alt="placeholder"/>
                                     </div>
-                                    <div>{reservation.header}</div>
-                                    <div>Check in date: {reservation.checkInDate}</div>
-                                    <div>Check out date: {reservation.checkOutDate}</div>
-                                    <div>Number of guests: {reservation.numGuests}</div>
-                                    <button onClick={()=> dispatch(deleteReservation(reservation.id))}>Delete Reservation</button>
-                                    <button onClick={()=> handleReservationEdit(reservation)}>Edit Reservation</button>
+                                    <div>
+                                        <div>{reservation.header}</div>
+                                        <div>Check in date: {reservation.checkInDate}</div>
+                                        <div>Check out date: {reservation.checkOutDate}</div>
+                                        <div>Number of guests: {reservation.numGuests}</div>
+                                    </div>
+                                    <div className="reservations-div-buttons">
+                                        <button onClick={()=> dispatch(deleteReservation(reservation.id))}>Delete</button>
+                                        <button onClick={()=> handleReservationEdit(reservation)}>Update</button>
+                                    </div>
                                 </div>
                             ))}
                         </div>

@@ -1,7 +1,6 @@
 .reservations-container {
     display: flex;
     justify-content: center;
-    border: 1px solid black;
 }
 
 .reservations-container > div {
@@ -45,7 +44,6 @@
 /* Reservations */
 
 .reservations-div {
-    border: 1px solid lightgrey;
     display: flex;
 }
 
@@ -54,9 +52,18 @@
     border-radius: 10px;
 }
 
-.reservations-div button {
-    background-color: #1FBEFF;
+.reservations-div-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
 
+.reservations-div-buttons button {
+    background-color: #1FBEFF;
+    color: white;
+    border-radius: 10px;
+    width: 20em;
+    height: 3em;
 }
 
 .reservations-div button:active {

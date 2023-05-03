@@ -61,7 +61,7 @@ export const updateReservation = (reservation) => async dispatch => {
         Headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({reservation})
+        body: JSON.stringify(reservation)
     });
     if (response.ok) {
         const {reservation} = await response.json();

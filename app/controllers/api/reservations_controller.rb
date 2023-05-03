@@ -8,7 +8,7 @@ class Api::ReservationsController < ApplicationController
     end
 
     def show
-        @reservation = Reservation.find(params[:id])
+        @reservation = Reservation.find_by(id: params[:id])
         render :show
     end
 
@@ -22,8 +22,8 @@ class Api::ReservationsController < ApplicationController
     end
 
     def update
-        @reservation = Reservation.find(params[:id])
-        if @reservation.save
+        @reservation = Reservation.find_by(id: params[:id])
+        if @reservation&.update(reservation_params)
             render :show
         else
             render json: {errors: @reservation.errors.full_messages }
@@ -35,13 +35,12 @@ class Api::ReservationsController < ApplicationController
         @reservation = Reservation.find(params[:id])
         @reservation.destroy
         render :show
-    
     end
 
     private 
 
     def reservation_params
-        params.require(:reservation).permit(:user_id, :check_in_date, :check_out_date, :num_guests, :listing_id)
+        params.require(:reservation).permit(:id, :user_id, :check_in_date, :check_out_date, :num_guests, :listing_id)
     end
 
 end
