@@ -26,7 +26,7 @@ const ReservationsEditModal = ({currentReservation, closeModal}) => {
     const handleClick = () => {
         const reservation = { ...currentReservation, checkInDate, checkOutDate, numGuests };
         dispatch(updateReservation(reservation));
-        closeModal()
+        closeModal();
     }
 
     return(
