@@ -27,7 +27,9 @@ export const fetchReservations = () => async dispatch => {
     const response = await csrfFetch(`/api/reservations`);
     if (response.ok) {
         const {reservations } = await response.json();
-        dispatch(receiveReservations(reservations));
+        if (reservations) {
+            dispatch(receiveReservations(reservations));
+        }
     }
 }
 
@@ -53,16 +55,16 @@ export const createReservation = (reservation) => async dispatch => {
     }
 }
 
-export const updateReservations = (reservation) => async dispatch => {
+export const updateReservation = (reservation) => async dispatch => {
     const response = await csrfFetch(`/api/reservations/${reservation.id}`, {
         method: 'PATCH',
         Headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(reservation)
+        body: JSON.stringify({reservation})
     });
     if (response.ok) {
-        const reservation = await response.json();
+        const {reservation} = await response.json();
         dispatch(receiveReservation(reservation));
     }
 }
@@ -81,7 +83,7 @@ const reservationsReducer = (state = {}, action) => {
         case RECEIVE_RESERVATIONS:
             return action.reservations;
         case RECEIVE_RESERVATION:
-            return { ...state, [action.reservation.id]: action.reservation.id };
+            return { ...state, [action.reservation.id]: action.reservation };
         case REMOVE_RESERVATION:
             const newState = { ...state};
             delete newState[action.reservationId];

@@ -12,11 +12,17 @@ ApplicationRecord.transaction do
     puts "Destroying tables..."
     # Unnecessary if using `rails db:seed:replant`
     User.destroy_all
-  
+
+    puts "Destroying listings..."
+    Listing.destroy_all
+
     puts "Resetting primary keys..."
     # For easy testing, so that after seeding, the first `User` has `id` of 1
     ApplicationRecord.connection.reset_pk_sequence!('users')
-  
+
+    ApplicationRecord.connection.reset_pk_sequence!('listings')
+
+
     puts "Creating users..."
     # Create one user with an easy to remember username, email, and password:
     User.create!(
@@ -53,13 +59,15 @@ ApplicationRecord.transaction do
     puts "Done!"
   end
 
-  Listing.all.each_with_index do |listing, index|
-    listing.photos.attach(
-      # The string passed to URI.open should be the URL of the image in its bucket.
-      # This sample assumes the bucket name is `benchbnb-seeds`.
-      io: URI.open("https://cloudbnb-seeds.s3.us-west-1.amazonaws.com/placeholderImage/deric-0zy0QwHwZy8-unsplash.jpg"), 
-      filename: "placeholderImage/deric-0zy0QwHwZy8-unsplash.jpg"
-    )
+  Listing.all.each_with_index do |listing, listing_i|
+    (1..5).each do |photo_i|
+      listing.photos.attach(
+        # The string passed to URI.open should be the URL of the image in its bucket.
+        # This sample assumes the bucket name is `benchbnb-seeds`.
+        io: URI.open("https://cloudbnb-seeds.s3.us-west-1.amazonaws.com/listings/listing_#{listing_i + 1}/listing_img_#{photo_i}.jpeg"), 
+        filename: "listings/listing_#{listing_i + 1}/listing_img_#{photo_i}.jpeg"
+      )
+    end
   end
 
   
