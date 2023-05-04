@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchListing } from "../../store/listings";
 import './ListingsShowPage.css'
-import placeHolderImage from '../../assets/deric-0zy0QwHwZy8-unsplash.jpg'
+// import placeHolderImage from '../../assets/deric-0zy0QwHwZy8-unsplash.jpg'
 import { useParams } from "react-router-dom";
 import { FaUserCircle } from 'react-icons/fa';
 import ReservationForm from "./ReservationForm";
+import ReviewsIndexPage from "../ReviewsIndexPage";
 
 
 const ListingsShowPage = () => {
@@ -76,6 +77,7 @@ const ListingsShowPage = () => {
                             </div>
                         </div>
                     </div>
+                <ReviewsIndexPage />
                 </div>
             </div>
         </>
