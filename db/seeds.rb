@@ -11,16 +11,35 @@ require "open-uri"
 ApplicationRecord.transaction do 
     puts "Destroying tables..."
     # Unnecessary if using `rails db:seed:replant`
-    User.destroy_all
+
+    puts "Destroying reviews..."
+    Review.destroy_all
+    
+    puts "Destroying reservations..."
+    Reservation.destroy_all
 
     puts "Destroying listings..."
     Listing.destroy_all
+
+    puts "Destroying users..."
+    User.destroy_all
+
+
+    
+
+
+    puts 'Destroying all ActiveStorage attachments...'
+    ActiveStorage::Attachment.all.each { |attachment| attachment.purge }
 
     puts "Resetting primary keys..."
     # For easy testing, so that after seeding, the first `User` has `id` of 1
     ApplicationRecord.connection.reset_pk_sequence!('users')
 
     ApplicationRecord.connection.reset_pk_sequence!('listings')
+
+    ApplicationRecord.connection.reset_pk_sequence!('reviews')
+
+    ApplicationRecord.connection.reset_pk_sequence!('reservations')
 
 
     puts "Creating users..."
@@ -39,6 +58,27 @@ ApplicationRecord.transaction do
         password: 'password'
       }) 
     end
+
+    user_1 = User.create!({
+      username: Faker::Internet.unique.username(specifier: 3),
+      email: Faker::Internet.unique.email,
+      password: 'password'
+    }) 
+    user_2 = User.create!({
+      username: Faker::Internet.unique.username(specifier: 3),
+      email: Faker::Internet.unique.email,
+      password: 'password'
+    }) 
+    user_3 = User.create!({
+      username: Faker::Internet.unique.username(specifier: 3),
+      email: Faker::Internet.unique.email,
+      password: 'password'
+    }) 
+    user_4 = User.create!({
+      username: Faker::Internet.unique.username(specifier: 3),
+      email: Faker::Internet.unique.email,
+      password: 'password'
+    }) 
 
     headings = { 
       1 =>  "754A - Peaceful Convenient 2B1B in Excelsior",
@@ -78,7 +118,34 @@ ApplicationRecord.transaction do
       })
     end
 
-    
+    puts 'Creating reviews...'
+    Listing.all.each do |listing|
+      number = 0
+        Review.create!({
+          body: Faker::Lorem.sentences(number: rand(1..3)).join(' '),
+          rating: rand(1..5),
+          listing_id: listing.id,
+          user_id: user_1.id
+        })
+        Review.create!({
+          body: Faker::Lorem.sentences(number: rand(1..3)).join(' '),
+          rating: rand(1..5),
+          listing_id: listing.id,
+          user_id: user_2.id
+        })
+        Review.create!({
+          body: Faker::Lorem.sentences(number: rand(1..3)).join(' '),
+          rating: rand(1..5),
+          listing_id: listing.id,
+          user_id: user_3.id
+        })
+        Review.create!({
+          body: Faker::Lorem.sentences(number: rand(1..3)).join(' '),
+          rating: rand(1..5),
+          listing_id: listing.id,
+          user_id: user_4.id
+        })
+    end
   
     puts "Done!"
 end

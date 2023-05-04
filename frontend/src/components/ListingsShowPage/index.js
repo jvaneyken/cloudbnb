@@ -7,6 +7,7 @@ import { useParams } from "react-router-dom";
 import { FaUserCircle } from 'react-icons/fa';
 import ReservationForm from "./ReservationForm";
 import ReviewsIndexPage from "../ReviewsIndexPage";
+import { fetchReviews } from "../../store/reviews";
 
 
 const ListingsShowPage = () => {
@@ -17,6 +18,7 @@ const ListingsShowPage = () => {
 
     useEffect(()=> {
         dispatch(fetchListing(listingId));
+        // dispatch(fetchReviews);
     }, [dispatch, listingId])
 
     const handleImageClick = (index) => {
@@ -77,7 +79,7 @@ const ListingsShowPage = () => {
                             </div>
                         </div>
                     </div>
-                    <ReviewsIndexPage listingID={listingId}/>
+                    <ReviewsIndexPage listingId={listingId}/>
                 </div>
             </div>
         </>

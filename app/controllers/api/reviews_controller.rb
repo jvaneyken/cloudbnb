@@ -1,6 +1,6 @@
 class Api::ReviewsController < ApplicationController
 
-    before_action :require_logged_in
+    # before_action :require_logged_in, only: [create, update, destroy]
     wrap_parameters include: Review.attribute_names + [:listingId, :userId]
 
     def create
@@ -13,7 +13,7 @@ class Api::ReviewsController < ApplicationController
     end
 
     def index
-        @reviews = Review.where(user_id: current_user.id)
+        @reviews = Review.all
         render :index
     end
 

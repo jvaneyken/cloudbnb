@@ -23,18 +23,19 @@ export const removeReview = reviewId => ({
 });
 
 // selectors
-export const getListingReviews = listingId => state => (
-    Object.values(state.reviews)
+export const getReviews = listingId => state => (
+        Object.values(state.reviews)
         .filter(review => review.listingId === listingId)
-        // .map(review => ({
-        //     ...review,
-        //     user: state.users[review.userID]?.userame
-        // }))
 );
 
+
+// export const getReviews = state => {
+//     return state.reviews ? Object.values(state.reviews) : []
+// }
+ 
 // thunk action creators
 export const fetchReviews = () => async dispatch => {
-    const response = await csrfFetch(`/api/reservations`);
+    const response = await csrfFetch(`/api/reviews`);
     if (response.ok) {
         const { reviews } = await response.json();
         if (reviews) {
@@ -47,7 +48,7 @@ export const fetchReview = reviewId => async dispatch => {
     const response = await csrfFetch(`/api/reviews/${reviewId}`);
     if (response.ok) {
         const review = await response.json();
-        dispatch(receiveReview(reviewId));
+        dispatch(receiveReview(review));
     }
 }
 
