@@ -40,11 +40,35 @@ ApplicationRecord.transaction do
       }) 
     end
 
+    headings = { 
+      1 =>  "754A - Peaceful Convenient 2B1B in Excelsior",
+      2 => "Peaceful garden space in nice neighborhood in SF",
+      3 => "Amazing 2 BR Mission Terrace Home",
+      4 => "Balcony & Bay views, Self check in, easy parking",
+      5 => "Private Garden suite in charming SF neighborhood",
+      6 => "Cozy Two Small Bedroom Units",
+      7 => "Views of the Bay in SF (6)",
+      8 => "Oceanfront Boho Retreat - Pacific Sunset Views",
+      9 => "2br Victorian House with Breathtaking views",
+      10 => "Tranquil, Stylish Studio Combining Indoor with",
+      11 => "Bali Hai Castro Retreat & Hot Tub",
+      12 => "Luxury High-Rise Downtown SF",
+      13 => "Lux 2 bed 2bath downtown SF",
+      14 => "San Francisco Jewel",
+      15 => "Private Modern Retreat - Patio, Fire Pit, Hot Tub+",
+      16 => "Top Area/Lux Suite/Garden nr Fillmore & Union Sts.",
+      17 => "Top Floor 2-bed 2bath spot in SoMa",
+      18 => "Fabulous Studio in the Castro District",
+      19 => "Spacious 1 bedroom condo w/ roofdeck in Nob Hill",
+      20 => "Meticulous Mid-Century Modern Manse"
+  }
+
+
     puts "Creating listings..."
     number = 0
     20.times do
       Listing.create!({
-        heading: "Test Listing #{number += 1}",
+        heading: "#{headings[number += 1]}",
         location: "San Francisco, California, United States",
         price: rand(100..3000),
         num_guests: rand(1..10),
@@ -57,17 +81,17 @@ ApplicationRecord.transaction do
     
   
     puts "Done!"
-  end
+end
 
-  Listing.all.each_with_index do |listing, listing_i|
-    (1..5).each do |photo_i|
-      listing.photos.attach(
-        # The string passed to URI.open should be the URL of the image in its bucket.
-        # This sample assumes the bucket name is `benchbnb-seeds`.
-        io: URI.open("https://cloudbnb-seeds.s3.us-west-1.amazonaws.com/listings/listing_#{listing_i + 1}/listing_img_#{photo_i}.jpeg"), 
-        filename: "listings/listing_#{listing_i + 1}/listing_img_#{photo_i}.jpeg"
-      )
-    end
+Listing.all.each_with_index do |listing, listing_i|
+  (1..5).each do |photo_i|
+    listing.photos.attach(
+      # The string passed to URI.open should be the URL of the image in its bucket.
+      # This sample assumes the bucket name is `benchbnb-seeds`.
+      io: URI.open("https://cloudbnb-seeds.s3.us-west-1.amazonaws.com/listings/listing_#{listing_i + 1}/listing_img_#{photo_i}.jpeg"), 
+      filename: "listings/listing_#{listing_i + 1}/listing_img_#{photo_i}.jpeg"
+    )
   end
+end
 
   

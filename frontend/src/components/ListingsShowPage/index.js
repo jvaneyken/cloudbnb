@@ -77,7 +77,7 @@ const ListingsShowPage = () => {
                             </div>
                         </div>
                     </div>
-                <ReviewsIndexPage />
+                    <ReviewsIndexPage listingID={listingId}/>
                 </div>
             </div>
         </>

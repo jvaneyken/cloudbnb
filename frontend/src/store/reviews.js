@@ -23,10 +23,14 @@ export const removeReview = reviewId => ({
 });
 
 // selectors
-export const getListingReviews = listingId => state => {
+export const getListingReviews = listingId => state => (
     Object.values(state.reviews)
         .filter(review => review.listingId === listingId)
-};
+        // .map(review => ({
+        //     ...review,
+        //     user: state.users[review.userID]?.userame
+        // }))
+);
 
 // thunk action creators
 export const fetchReviews = () => async dispatch => {
