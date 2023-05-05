@@ -5,6 +5,7 @@ class Api::ReviewsController < ApplicationController
 
     def create
         @review = current_user.reviews.new(review_params)
+        # @review = Review.new(review_params)
         if @review.save
             render :show
         else
@@ -15,6 +16,15 @@ class Api::ReviewsController < ApplicationController
     def index
         @reviews = Review.all
         render :index
+    end
+
+    def show
+        @review = Review.find_by(id: params[:id])
+        if @review
+            render :show
+        else
+            render json: {errors: @review.errors.full_messages }, status: unprocessable_entity
+        end
     end
 
     def update
@@ -35,7 +45,7 @@ class Api::ReviewsController < ApplicationController
     private
 
     def review_params
-        params.require(:reviews).permit(:body, :rating, :listing_id)
+        params.require(:review).permit(:user_id, :body, :rating, :listing_id)
     end
 
 end

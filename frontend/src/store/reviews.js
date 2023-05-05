@@ -52,7 +52,7 @@ export const fetchReview = reviewId => async dispatch => {
     }
 }
 
-export const createReservation = review => async dispatch => {
+export const createReview = review => async dispatch => {
     const response = await csrfFetch(`/api/reviews/`, {
         method: 'POST',
         Headers: {
@@ -66,7 +66,7 @@ export const createReservation = review => async dispatch => {
     }
 }
 
-export const updateReservation = review => async dispatch => {
+export const updateReview = review => async dispatch => {
     const response = await csrfFetch(`/api/reviews/${review.id}`, {
         method: 'PATCH',
         Headers: {
