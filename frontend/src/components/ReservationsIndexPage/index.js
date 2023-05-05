@@ -33,8 +33,8 @@ const ReservationsIndexPage = () => {
             <>
             {showModal && (
                 <ReservationsEditModal 
-                currentReservation={currentReservation}
-                closeModal={()=> setShowModal(false)} /> 
+                    currentReservation={currentReservation}
+                    closeModal={()=> setShowModal(false)} /> 
             )}
                 <div className="reservations-container" >
                     <div>

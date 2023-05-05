@@ -7,7 +7,7 @@ import { useHistory } from 'react-router-dom';
 
 
 const ReservationForm = ({ listing }) => {
-    const userId = useSelector(state => state.session.user.id);
+    const userId = useSelector(state => state.session.user?.id);
     const history = useHistory();
     const dispatch = useDispatch();
     let reservation = {

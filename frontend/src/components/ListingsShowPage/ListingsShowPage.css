@@ -31,7 +31,6 @@
     gap: .5rem;
     border-radius: 10px;
     overflow: hidden;
-    grid-auto-flow: ;
 }
 
 .listing-image-div {
