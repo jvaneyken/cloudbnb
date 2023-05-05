@@ -3,11 +3,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { createReview } from '../../store/reviews';
 
-const ReviewCreateModal = ({listingId, closeModal}) => {
+const ReviewCreateModal = ({listingId, closeCreateModal}) => {
     const userId = useSelector(state => state.session.user.id);
+    // const username = useSelector(state => state.session.user.userName)
+    
 
     const dispatch = useDispatch();
     let review = {
+        // username: username,
         userId: userId,
         rating: '',
         body: '',
@@ -20,15 +23,16 @@ const ReviewCreateModal = ({listingId, closeModal}) => {
     const handleClick = () => {
         const newReview = {...review, rating, body}
         dispatch(createReview(newReview));
-        closeModal();
+        closeCreateModal();
     }
 
     return(
         <>
             <div>I am the Review Create Modal</div>
             <div>Leave a Review</div>
-            <label htmlFor="rating">Rating</label>
-            <select onChange={((e)=> setRating(e.target.value))} id='rating'>
+            <label htmlFor="create-rating">Rating</label>
+            <select onChange={((e)=> setRating(e.target.value))} id='create-rating'>
+                <option selected disabled>Choose a rating</option>
                 <option value="1" >1</option>
                 <option value="2" >2</option>
                 <option value="3" >3</option>
