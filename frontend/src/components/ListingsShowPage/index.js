@@ -7,7 +7,6 @@ import { useParams } from "react-router-dom";
 import { FaUserCircle } from 'react-icons/fa';
 import ReservationForm from "./ReservationForm";
 import ReviewsIndexPage from "../ReviewsIndexPage";
-import { fetchReviews } from "../../store/reviews";
 
 
 const ListingsShowPage = () => {
@@ -59,7 +58,7 @@ const ListingsShowPage = () => {
                         <div className="listing-details-container">
                             <div className="listing-details-div">
                                 <div>
-                                    <h1 className="listing-details-title">Entire property hosted by "Fake name"</h1>
+                                    <h1 className="listing-details-title">Entire property hosted by Guillermo</h1>
                                     <div className="listing-details">    
                                         <span>{listing.numGuests} guests</span>
                                         <span>&#x2022;</span>

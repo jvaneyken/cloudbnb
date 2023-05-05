@@ -14,10 +14,10 @@
     border-radius: 10px;
 }
 
-.outer-div form button {
+#res-form-button {
     width: 100%;
-    padding-top: 20px;
-    padding-bottom: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
     background-color: #1FBEFF;
     color: white;
     border-radius: 5px;
@@ -28,7 +28,11 @@
     background-color: #1888b4;
 }
 
-.reservation-form-b-b-c {
-    display: flex;
-    justify-content: space-between;
+#price-span {
+    font-weight: bold;
+}
+
+#reviews-span {
+    text-decoration: underline;
+    font-size: 12px;
 }

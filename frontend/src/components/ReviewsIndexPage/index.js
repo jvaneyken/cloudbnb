@@ -53,21 +53,27 @@ const ReviewsIndexPage = ({listingId}) => {
                 currentReview={currentReview} 
                 closeEditModal={()=> setShowReviewEditModal(false)} />
         )}
-            <div>
+            <div className='reviews-container'>
                 {reviews && reviews.map((review) => (
-                <div key={review.id}>
-                    <FaUserCircle />
-                    <div>{review.userName}</div>
-                    <div>{review.rating}</div>
-                    <div>{review.createdAt}</div>
+                <div className='review-div' key={review.id}>
+                    <div className='reviews-header'>
+                        <div>
+                            < FaUserCircle className='review-profile'/>
+                        </div>
+                        <div>
+                        <div>{review.userName}</div>
+                            <div>rating: {review.rating}</div>
+                            <div>{review.createdAt}</div>
+                        </div>
+                    </div>
                     <div>{review.body}</div>
                     <button onClick={()=>handleReviewEdit(review)}>Edit</button>
                     <button onClick={()=> dispatch(deleteReview(review.id))}>Delete</button>
                  </div>
                 ))}
-                <div>
-                    <button onClick={()=> setShowReviewCreateModal(prev => !prev)}>Leave a review</button>
-                </div>
+            </div>
+            <div>
+                <button  id='review-button' onClick={()=> setShowReviewCreateModal(prev => !prev)}>Leave a review</button>
             </div>
         </>
     )

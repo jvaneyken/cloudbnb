@@ -39,34 +39,16 @@ const ReservationForm = ({ listing }) => {
             <div className="outer-div">
                 <div>
                     <div className="reservation-form-price-reviews">
-                        <div><span>$ {listing.price}</span> <span>night</span></div>
-                        <div>478 reviews</div>
+                        <div><span id='price-span'>$ {listing.price}</span> night</div>
+                        <div><span id='reviews-span'>5 reviews</span></div>
                     </div>
                     <div>
                         <form >
                             <input type="date" onChange={((e)=> setCheckInDate(e.target.value))} placeholder="Check in date" />
                             <input type="date" onChange={((e)=> setCheckOutDate(e.target.value))} placeholder="Check out date" />
                             <input type="text" onChange={((e)=> setNumGuests(e.target.value))} placeholder="Number of guests" />
-                            <button type='button' onClick={handleClick}><span>Reserve</span></button>
+                            <button id='res-form-button' type='button' onClick={handleClick}><span>Reserve</span></button>
                         </form>
-                    </div>
-                </div>
-                <div>
-                    <div className='reservation-form-b-b-c'>
-                        <div>Stuff</div>
-                        <div>Other Stuff</div>
-                    </div>
-                    <div className='reservation-form-b-b-c'>
-                        <div>Stuff</div>
-                        <div>Other Stuff</div>
-                    </div>
-                    <div className='reservation-form-b-b-c'>
-                        <div>Stuff</div>
-                        <div>Other Stuff</div>
-                    </div>
-                    <div className='reservation-form-b-b-c'>
-                        <div>Stuff</div>
-                        <div>Other Stuff</div>
                     </div>
                 </div>
             </div>

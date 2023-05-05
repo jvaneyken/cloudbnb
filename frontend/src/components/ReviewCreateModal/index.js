@@ -28,19 +28,24 @@ const ReviewCreateModal = ({listingId, closeCreateModal}) => {
 
     return(
         <>
-            <div>I am the Review Create Modal</div>
-            <div>Leave a Review</div>
-            <label htmlFor="create-rating">Rating</label>
-            <select onChange={((e)=> setRating(e.target.value))} id='create-rating'>
-                <option selected disabled>Choose a rating</option>
-                <option value="1" >1</option>
-                <option value="2" >2</option>
-                <option value="3" >3</option>
-                <option value="4" >4</option>
-                <option value="5" >5</option>
-            </select>
-            <input type='textarea' onChange={((e)=> setBody(e.target.value))}/>
-            <button onClick={handleClick}>Leave Review</button>
+            <div id='review-create-modal-background'>
+                <div id='review-create-modal'>
+                    <div id='review-create-modal-content'>
+                        <div>Leave a Review</div>
+                        <label htmlFor="create-rating">Rating</label>
+                        <select onChange={((e)=> setRating(e.target.value))} id='create-rating'>
+                            <option selected disabled>Choose a rating</option>
+                            <option value="1" >1</option>
+                            <option value="2" >2</option>
+                            <option value="3" >3</option>
+                            <option value="4" >4</option>
+                            <option value="5" >5</option>
+                        </select>
+                        <input type='textarea' onChange={((e)=> setBody(e.target.value))}/>
+                        <button onClick={handleClick}>Leave Review</button>
+                    </div>
+                </div>
+            </div>
         </>
     )
 }   
