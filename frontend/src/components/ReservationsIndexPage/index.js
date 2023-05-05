@@ -38,17 +38,19 @@ const ReservationsIndexPage = () => {
             )}
                 <div className="reservations-container" >
                     <div>
-                        <div>
-                            <h1>Trips</h1>
-                        </div>
-                        <div>
-                            <div className="no-trips-header hidden">
-                                <div className="no-trips-content">
-                                    <div>Handclap icon</div>
-                                    <div>No trips booked...yet!</div>
-                                    <div>Time to dust off your bags and start planning your next adventure</div>
-                                </div>
-                                <div className="no-trips-header-image">  
+                        <div className="trips-heading-div">
+                            <div>
+                                <h1>Trips</h1>
+                            </div>
+                            <div>
+                                <div className="no-trips-header hidden">
+                                    <div className="no-trips-content">
+                                        <div>Handclap icon</div>
+                                        <div>No trips booked...yet!</div>
+                                        <div>Time to dust off your bags and start planning your next adventure</div>
+                                    </div>
+                                    <div className="no-trips-header-image">  
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -58,10 +60,18 @@ const ReservationsIndexPage = () => {
                                     <div className="reservations-div-image">
                                         <img src={placeHolderImage} alt="placeholder"/>
                                     </div>
-                                    <div>
+                                    <div className="reservations-details">
                                         <div>{reservation.header}</div>
-                                        <div>Check in date: {reservation.checkInDate}</div>
-                                        <div>Check out date: {reservation.checkOutDate}</div>
+                                        <div>Check in date: {new Date(reservation.checkInDate).toLocaleDateString("en-US",{
+                                            month: 'long',
+                                            day: 'numeric',
+                                            year: 'numeric'
+                                        })}</div>
+                                        <div>Check out date: {new Date(reservation.checkOutDate).toLocaleDateString("en-US",{
+                                            month: 'long',
+                                            day: 'numeric',
+                                            year: 'numeric'
+                                        })}</div>
                                         <div>Number of guests: {reservation.numGuests}</div>
                                     </div>
                                     <div className="reservations-div-buttons">

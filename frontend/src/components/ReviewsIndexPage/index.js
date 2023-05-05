@@ -63,7 +63,10 @@ const ReviewsIndexPage = ({listingId}) => {
                         <div>
                         <div>{review.userName}</div>
                             <div>rating: {review.rating}</div>
-                            <div>{review.createdAt}</div>
+                            <div>{new Date(review.createdAt).toLocaleDateString("en-US", {
+                                month: 'long',
+                                year: 'numeric'   
+                            })}</div>
                         </div>
                     </div>
                     <div>{review.body}</div>

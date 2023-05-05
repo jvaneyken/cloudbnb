@@ -1,10 +1,16 @@
 .reservations-container {
     display: flex;
     justify-content: center;
+    font-family:  -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
 }
 
 .reservations-container > div {
     width: 89%;
+}
+
+.trips-heading-div {
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 
@@ -43,8 +49,32 @@
 
 /* Reservations */
 
+.reservations-container h1 {
+    font-weight: 500;
+    font-size: 40px;
+    /* border: 0px 30px; */
+}
+
 .reservations-div {
     display: flex;
+}
+
+.reservations-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0px 20px;
+}
+
+.reservations-details div {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: grey;
+    font-weight: 200;
+}
+.reservations-details > div:first-child {
+    font-weight: 700;
+    color: black;
 }
 
 .reservations-div-image img {

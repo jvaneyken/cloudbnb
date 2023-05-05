@@ -16,7 +16,7 @@ const ListingsIndexPage = () => {
     return(
             <div className="listings-container">
                 {listings.map((listing) => (
-                    <Link to={`listings/${listing.id}`}  key={listing.id}>
+                    <Link className="listings-link" to={`listings/${listing.id}`}  key={listing.id}>
                         <div className="listings-div">
                             {/* <img src={listing.photoUrls[0]} className="listing-image" alt="placeholder" /> */}
                             <img src={listing.photoUrls[0]} className="listings-image" alt="placeholder"/>
