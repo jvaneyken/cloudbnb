@@ -5,6 +5,7 @@ import { fetchReviews, getReviews } from '../../store/reviews';
 import { useEffect, useState } from 'react';
 import ReviewCreateModal from '../ReviewCreateModal';
 import ReviewEditModal from '../ReviewEditModal';
+import { deleteReview } from '../../store/reviews';
 // import {createSelector} from 'reselect'; 
 // import { getListingReviews } from '../../store/reviews';
 // import { useParams } from 'react-router-dom';
@@ -28,10 +29,16 @@ const ReviewsIndexPage = ({listingId}) => {
         dispatch(fetchReviews());
     }, [dispatch])
 
+    const [currentReview, setCurrentReview] = useState({});
+
     // useEffect(()=> {
     //     dispatch(fetchReviews());
     // }, [])
 
+    const handleReviewEdit = (review) => {
+        setCurrentReview(review);
+        setShowReviewEditModal(prev => !prev);
+    }
     
 
     return(
@@ -39,19 +46,23 @@ const ReviewsIndexPage = ({listingId}) => {
         {showReviewCreateModal && (
             <ReviewCreateModal 
                 listingId={listingId}
-                closeModal={()=> setShowReviewCreateModal(false)} />
+                closeCreateModal={()=> setShowReviewCreateModal(false)} />
         )}
         {showReviewEditModal && (
-            <ReviewEditModal />
+            <ReviewEditModal 
+                currentReview={currentReview} 
+                closeEditModal={()=> setShowReviewEditModal(false)} />
         )}
             <div>
                 {reviews && reviews.map((review) => (
                 <div key={review.id}>
                     <FaUserCircle />
                     <div>{review.userName}</div>
+                    <div>{review.rating}</div>
                     <div>{review.createdAt}</div>
                     <div>{review.body}</div>
-                    <button onClick={()=> setShowReviewEditModal(prev => !prev)}>Edit</button>
+                    <button onClick={()=>handleReviewEdit(review)}>Edit</button>
+                    <button onClick={()=> dispatch(deleteReview(review.id))}>Delete</button>
                  </div>
                 ))}
                 <div>
