@@ -7,7 +7,11 @@ import { useHistory } from 'react-router-dom';
 
 
 const ReservationForm = ({ listing }) => {
-    const userId = useSelector(state => state.session.user?.id);
+    const user = useSelector(state => state.session.user);
+    let userId;
+    if (user) {
+        userId = user.id;
+    }
     const history = useHistory();
     const dispatch = useDispatch();
     let reservation = {
@@ -26,10 +30,12 @@ const ReservationForm = ({ listing }) => {
 
     
     const handleClick = () => {
-        reservation = { ...reservation, userId, checkInDate, checkOutDate, numGuests, listingId: listing.id }
-        dispatch(createReservation(reservation));
-        let path = '/reservations';
-        history.push(path);
+        if (user) {
+            reservation = { ...reservation, userId, checkInDate, checkOutDate, numGuests, listingId: listing.id }
+            dispatch(createReservation(reservation));
+            let path = '/reservations';
+            history.push(path);
+        }
     }
     // :id, :user_id, :check_in_date, :check_out_date, :num_guests, :listing_id
     // :user_id, :check_in_date, :check_out_date, :num_guests, :listing_id

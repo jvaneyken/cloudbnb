@@ -5,6 +5,7 @@ import Navigation from './components/Navigation';
 import ListingsIndexPage from './components/ListingsIndexPage';
 import ListingsShowPage from './components/ListingsShowPage';
 import ReservationsIndexPage from './components/ReservationsIndexPage';
+import { ProtectedRoute } from './components/Routes/Routes';
 
 function App() {
   return (
@@ -20,9 +21,7 @@ function App() {
           <Route exact path='/listings/:listingId'>
             <ListingsShowPage />
           </Route>
-          <Route exact path='/reservations'>
-            <ReservationsIndexPage />
-          </Route>
+          <ProtectedRoute exact path='/reservations' component={ReservationsIndexPage} />
         </Switch>
     </>
   );
