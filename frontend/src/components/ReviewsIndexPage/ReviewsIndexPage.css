@@ -9,6 +9,7 @@
 
 .review-div {
     padding: 20px;
+    line-height: 1.2em;
 }
 
 .reviews-header {
@@ -21,12 +22,65 @@
     padding-right: 10px;
 }
 
+.review-user-date-rating {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+}
+
+.review-username {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.review-rating {
+    font-size: 15px;
+    display: flex;
+    align-items: start;
+    gap: 5px;
+}
+
+.review-rating > div {
+    position: relative;
+    bottom: 2px;
+}
+
+.review-date {
+    font-size: 15px;
+    color: grey;
+    font-weight: 300;
+}
+
+.review-body {
+    margin-bottom: 10px;
+    font-weight: 300;
+    color: rgb(89, 89, 89);
+}
+
+.review-edit-delete {
+    padding: 3px 5px;
+    border-radius: 5px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.review-edit-delete:hover {
+    background-color: black;
+    color: white;
+}
+
 #review-button {
     font-size: 24px;
     padding: 10px 20px;
     border: 1px solid black;
-    border-radius: 5px;
+    border-radius: 8px;
     background-color: white;
     margin-top: 20px;
     margin-bottom: 20px;
+    cursor: pointer;
+}
+
+#review-button:hover {
+    background-color: rgb(244, 244, 244);
 }
