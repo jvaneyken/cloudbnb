@@ -19,13 +19,15 @@ function ProfileButton({ user }) {
   useEffect(() => {
     if (!showMenu) return;
 
-    const closeMenu = () => {
-      if (user) {
+    const closeMenu = (event) => {
+      const profileDropdown = document.getElementsByClassName('profile-dropdown')[0];
+      if (profileDropdown && !profileDropdown.contains(event.target)) {
         setShowMenu(false);
       }
     };
 
     document.addEventListener('click', closeMenu);
+    
   
     return () => document.removeEventListener("click", closeMenu);
   }, [showMenu, user]);
