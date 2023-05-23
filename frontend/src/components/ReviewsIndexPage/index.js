@@ -1,24 +1,16 @@
 import './ReviewsIndexPage.css';
-import { FaUserCircle } from 'react-icons/fa';
+import { FaUserCircle, FaStar } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchReviews, getReviews } from '../../store/reviews';
 import { useEffect, useState } from 'react';
 import ReviewCreateModal from '../ReviewCreateModal';
 import ReviewEditModal from '../ReviewEditModal';
 import { deleteReview } from '../../store/reviews';
-// import {createSelector} from 'reselect'; 
-// import { getListingReviews } from '../../store/reviews';
-// import { useParams } from 'react-router-dom';
 
 const ReviewsIndexPage = ({listingId}) => {
-    // const { listingId } = useParams();
-    // const reviews = useSelector(getListingReviews(parseInt(listingId)));
-    // const selectReviews = createSelector(
-    //     state => state.reviews,
-    //     reviews => Object.values(reviews).filter(review => review.listingId === listingId)
-    // );
     const reviews = useSelector(getReviews(parseInt(listingId)));
-    // const reviews = useSelector(selectReviews);
+    const userId = useSelector(state => state.session.user?.id);
+    console.log(userId);
     
     const dispatch = useDispatch()
 
@@ -30,10 +22,6 @@ const ReviewsIndexPage = ({listingId}) => {
     }, [dispatch])
 
     const [currentReview, setCurrentReview] = useState({});
-
-    // useEffect(()=> {
-    //     dispatch(fetchReviews());
-    // }, [])
 
     const handleReviewEdit = (review) => {
         setCurrentReview(review);
@@ -60,24 +48,32 @@ const ReviewsIndexPage = ({listingId}) => {
                         <div>
                             < FaUserCircle className='review-profile'/>
                         </div>
-                        <div>
-                        <div>{review.userName}</div>
-                            <div>rating: {review.rating}</div>
-                            <div>{new Date(review.createdAt).toLocaleDateString("en-US", {
-                                month: 'long',
-                                year: 'numeric'   
-                            })}</div>
+                        <div className='review-user-date-rating'>
+                            <div>
+                                <div className="review-username">{review.userName}</div>
+                                <div className='review-date'>{new Date(review.createdAt).toLocaleDateString("en-US", {
+                                    month: 'long',
+                                    year: 'numeric'   
+                                })}</div>
+                            </div>
+                            <div className='review-rating'>< FaStar /><div>{review.rating}</div></div>
                         </div>
                     </div>
-                    <div>{review.body}</div>
-                    <button onClick={()=>handleReviewEdit(review)}>Edit</button>
-                    <button onClick={()=> dispatch(deleteReview(review.id))}>Delete</button>
+                    <div className='review-body'>{review.body}</div>
+                    {userId === review.userId ?    
+                    <>
+                        <button className='review-edit-delete' onClick={()=>handleReviewEdit(review)}>Edit</button>
+                        <button className='review-edit-delete' onClick={()=> dispatch(deleteReview(review.id))}>Delete</button> 
+                    </> 
+                    : null }
                  </div>
                 ))}
             </div>
+            { userId !== undefined ?  
             <div>
                 <button  id='review-button' onClick={()=> setShowReviewCreateModal(prev => !prev)}>Leave a review</button>
             </div>
+            : null }
         </>
     )
 }
