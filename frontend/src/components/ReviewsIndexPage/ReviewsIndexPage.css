@@ -44,6 +44,7 @@
 .review-rating > div {
     position: relative;
     bottom: 2px;
+    z-index: -1;
 }
 
 .review-date {

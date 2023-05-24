@@ -22,10 +22,12 @@
     color: white;
     border-radius: 5px;
     margin-top: 15px;
+    cursor: pointer;
+    font-size: 1rem;
 }
 
-.outer-div form button:active {
-    background-color: #1888b4;
+#res-form-button:hover {
+    background-color: #19a9e2;
 }
 
 #price-span {
@@ -35,4 +37,18 @@
 #reviews-span {
     text-decoration: underline;
     font-size: 12px;
+}
+
+.reservation-date-input {
+    margin-bottom: 10px;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+#reservation-select-num-guests {
+    margin-bottom: 10px;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    padding: 5px 0px;
 }

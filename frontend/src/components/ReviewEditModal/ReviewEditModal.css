@@ -7,27 +7,64 @@
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-  
-  #review-edit-modal-background {
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-  }
-  
-  #review-edit-modal-content {
-    position: absolute;
-    background-color:white;
-    border-radius: 10px;
-    padding: 20px;
-    font-family:  -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+}
 
-  }
+#review-edit-modal-background {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
 
+#review-edit-modal-content {
+  position: absolute;
+  background-color:white;
+  border-radius: 10px;
+  padding: 20px;
+  font-family:  -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+}
 
-  #modal-content button {
-    text-decoration: none;
-  }
+#review-edit-title {
+  margin: 10px 0px;
+  align-self: center;
+}
+
+#review-edit-rating {
+  margin-bottom: 10px;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  padding: 5px 0px;
+}
+
+#review-edit-rating:hover {
+  background-color: rgb(245, 245, 245);
+}
+
+#review-edit-text {
+  padding: 5px;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  min-height: 8rem;
+  text-align: start;
+  resize: none;
+  margin-bottom: 10px;
+  font-family: -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+}
+
+#review-edit-modal-content button {
+  text-decoration: none;
+  border-radius: 5px;
+  padding: 15px 0px;
+  color: white;
+  background-color: #1FBEFF;
+  cursor: pointer;
+}
+
+#review-create-modal-content button:hover {
+  background-color: #19a9e2;
+}
