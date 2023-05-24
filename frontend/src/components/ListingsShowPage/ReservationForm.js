@@ -21,7 +21,6 @@ const ReservationForm = ({ listing }) => {
         numGuests: '',
         listingId: ''
     }
-    // const { listingId } = listing; 
 
     const [checkInDate, setCheckInDate] = useState('');
     const [checkOutDate, setCheckOutDate] = useState('');
@@ -50,9 +49,22 @@ const ReservationForm = ({ listing }) => {
                     </div>
                     <div>
                         <form >
-                            <input type="date" onChange={((e)=> setCheckInDate(e.target.value))} placeholder="Check in date" />
-                            <input type="date" onChange={((e)=> setCheckOutDate(e.target.value))} placeholder="Check out date" />
-                            <input type="text" onChange={((e)=> setNumGuests(e.target.value))} placeholder="Number of guests" />
+                            <input className='reservation-date-input' type="date" onChange={((e)=> setCheckInDate(e.target.value))} placeholder="Check in date" />
+                            <input className='reservation-date-input' type="date" onChange={((e)=> setCheckOutDate(e.target.value))} placeholder="Check out date" />
+                            {/* <input type="text" onChange={((e)=> setNumGuests(e.target.value))} placeholder="Number of guests" /> */}
+                            <select onChange={((e)=> setNumGuests(e.target.value))} placeholder="Number of guests" id='reservation-select-num-guests'>
+                                <option selected disabled>Select Number of guests</option>
+                                <option value="1" >1</option>
+                                <option value="2" >2</option>
+                                <option value="3" >3</option>
+                                <option value="4" >4</option>
+                                <option value="5" >5</option>
+                                <option value="6" >6</option>
+                                <option value="7" >7</option>
+                                <option value="8" >8</option>
+                                <option value="9" >9</option>
+                                <option value="10">10</option>
+                            </select>
                             <button id='res-form-button' type='button' onClick={handleClick}><span>Reserve</span></button>
                         </form>
                     </div>

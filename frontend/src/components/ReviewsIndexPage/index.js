@@ -10,7 +10,6 @@ import { deleteReview } from '../../store/reviews';
 const ReviewsIndexPage = ({listingId}) => {
     const reviews = useSelector(getReviews(parseInt(listingId)));
     const userId = useSelector(state => state.session.user?.id);
-    console.log(userId);
     
     const dispatch = useDispatch()
 
@@ -34,7 +33,8 @@ const ReviewsIndexPage = ({listingId}) => {
         {showReviewCreateModal && (
             <ReviewCreateModal 
                 listingId={listingId}
-                closeCreateModal={()=> setShowReviewCreateModal(false)} />
+                closeCreateModal={()=> setShowReviewCreateModal(false)}
+                reviews={reviews} />
         )}
         {showReviewEditModal && (
             <ReviewEditModal 
