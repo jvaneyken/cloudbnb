@@ -4,9 +4,9 @@ import { fetchReservations, deleteReservation } from "../../store/reservations";
 import './ReservationsIndexPage.css'
 // import reservationsImage from '../../assets/airbnb_reservations_image2.jpg';
 import placeHolderImage from '../../assets/deric-0zy0QwHwZy8-unsplash.jpg';
-import ReservationsEditModal from "../ReservationsEditModal";
+import ReservationsEditModal from "../ReservationsEditModal"; 
 // import {Link} from 'react-router-dom';
-
+import { MdOutlineWavingHand } from 'react-icons/md';
 
 
 const ReservationsIndexPage = () => {
@@ -42,17 +42,19 @@ const ReservationsIndexPage = () => {
                             <div>
                                 <h1>Trips</h1>
                             </div>
-                            <div>
-                                <div className="no-trips-header hidden">
-                                    <div className="no-trips-content">
-                                        <div>Handclap icon</div>
-                                        <div>No trips booked...yet!</div>
-                                        <div>Time to dust off your bags and start planning your next adventure</div>
-                                    </div>
-                                    <div className="no-trips-header-image">  
+                            { reservations.length === 0 && (
+                                <div className="no-trips-container">
+                                    <div className="no-trips-header">
+                                        <div className="no-trips-content">
+                                            <div className="waving-hand-icon"><MdOutlineWavingHand /></div>
+                                            <h2>No trips booked...yet!</h2>
+                                            <div id="no-trips-text">Time to dust off your bags and start planning your next adventure</div>
+                                        </div>
+                                        <div className="no-trips-header-image">  
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            )}
                         </div>
                         <div>
                             {reservations && reservations.map((reservation) => (
