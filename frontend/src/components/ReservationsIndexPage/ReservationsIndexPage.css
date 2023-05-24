@@ -28,7 +28,6 @@
     /* grid-template-columns: repeat(3,minmax(0,1fr)); */
     grid-template-columns: 1fr 3fr;
     column-gap: 16px;
-    /* height: 270px; */
     min-height: 25rem;
 }
 
@@ -79,6 +78,7 @@
 
 .reservations-div {
     display: flex;
+    margin-bottom: 2rem;
 }
 
 .reservations-details {
@@ -99,23 +99,33 @@
     color: black;
 }
 
-.reservations-div-image img {
+.reservations-link img {
     width: 10em;
-    border-radius: 10px;
+    height: 10em;
+    border-radius: 30px;
 }
 
 .reservations-div-buttons {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    width: fit-content;
+    margin-left: 5em;
 }
 
 .reservations-div-buttons button {
-    background-color: #1FBEFF;
-    color: white;
+    /* background-color: #1FBEFF; */
+    background-color: white;
+    border: 1px solid black;
+    /* color: white; */
     border-radius: 10px;
-    width: 20em;
+    width: 10em;
     height: 3em;
+    cursor: pointer;
+}
+
+.reservations-div-buttons button:hover {
+    background-color: rgb(245, 245, 245);
 }
 
 .reservations-div button:active {
