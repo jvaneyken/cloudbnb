@@ -1,0 +1,72 @@
+#reservation-update-modal-background {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+#reservation-update-modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#reservation-update-modal-content {
+  position: absolute;
+  background-color:white;
+  border-radius: 10px;
+  padding: 3rem 20px;
+  font-family:  -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+}
+
+#reservation-update-form {
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+}
+
+#reservation-update-title {
+    /* margin-top: 10px; */
+    margin-bottom: 40px;
+    align-self: center;
+  }
+
+#res-form-update-button {
+    width: 100%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background-color: #1FBEFF;
+    color: white;
+    border-radius: 5px;
+    margin-top: 15px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+#res-form-update-button:hover {
+    background-color: #19a9e2;
+}
+
+.reservation-update-date-input {
+    margin-bottom: 10px;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+#reservation-update-select-num-guests {
+    margin-bottom: 10px;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    padding: 5px 0px;
+}

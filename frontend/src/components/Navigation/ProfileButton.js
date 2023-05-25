@@ -37,9 +37,9 @@ function ProfileButton({ user }) {
     dispatch(sessionActions.logout());
   };
 
-  const handleLoginClick = () => {
+  // const handleLoginClick = () => {
 
-  }
+  // }
 
   return (
     <>
@@ -51,6 +51,7 @@ function ProfileButton({ user }) {
         <ul className="profile-dropdown">
           <li>{user.username}</li>
           <li>{user.email}</li>
+          <li id="trips-link-li"><NavLink id="trips-link" to="/reservations" >Trips</NavLink></li>
           <li>
             <button onClick={logout}>Log Out</button>
           </li>
