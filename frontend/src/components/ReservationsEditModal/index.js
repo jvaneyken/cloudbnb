@@ -30,14 +30,28 @@ const ReservationsEditModal = ({currentReservation, closeModal}) => {
     }
 
     return(
-        <div id="modal-background">
-            <div id='modal'>
-                <div id='modal-content'>
-                    <form >
-                        <input type="date" onChange={((e)=> setCheckInDate(e.target.value))} placeholder="Check in date" />
-                        <input type="date" onChange={((e)=> setCheckOutDate(e.target.value))} placeholder="Check out date" />
-                        <input type="text" onChange={((e)=> setNumGuests(parseInt(e.target.value)))} placeholder="Number of guests" />
-                        <button type='button' onClick={handleClick}><span>Update</span></button>
+        <div id="reservation-update-modal-background">
+            <div id='reservation-update-modal'>
+                <div id='reservation-update-modal-content'>
+                <div id='reservation-update-title'>Update your Reservation!</div>
+                    <form id='reservation-update-form' >
+                        <input className='reservation-update-date-input' type="date" onChange={((e)=> setCheckInDate(e.target.value))} placeholder="Check in date" />
+                        <input className='reservation-update-date-input' type="date" onChange={((e)=> setCheckOutDate(e.target.value))} placeholder="Check out date" />
+                        {/* <input type="text" onChange={((e)=> setNumGuests(parseInt(e.target.value)))} placeholder="Number of guests" /> */}
+                        <select onChange={((e)=> setNumGuests(e.target.value))} placeholder="Number of guests" id='reservation-update-select-num-guests'>
+                                <option selected disabled>Select Number of guests</option>
+                                <option value="1" >1</option>
+                                <option value="2" >2</option>
+                                <option value="3" >3</option>
+                                <option value="4" >4</option>
+                                <option value="5" >5</option>
+                                <option value="6" >6</option>
+                                <option value="7" >7</option>
+                                <option value="8" >8</option>
+                                <option value="9" >9</option>
+                                <option value="10">10</option>
+                            </select>
+                        <button id='res-form-update-button' type='button' onClick={handleClick}><span>Update</span></button>
                     </form>
                 </div>
             </div>
