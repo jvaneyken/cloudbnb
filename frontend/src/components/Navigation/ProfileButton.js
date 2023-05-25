@@ -59,8 +59,12 @@ function ProfileButton({ user }) {
       )}
       { !user && showMenu && (
         <ul className="profile-dropdown">
-          <LoginFormModal />
-          <NavLink to="/signup">Sign Up</NavLink>
+          <div className="login-link">
+            <LoginFormModal />
+          </div>
+          <div className="signup-link">
+            <NavLink to="/signup" >Sign Up</NavLink>
+          </div>
         </ul>
       )}
     </>

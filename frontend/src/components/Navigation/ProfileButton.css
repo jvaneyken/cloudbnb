@@ -7,7 +7,7 @@
     border: 1px solid lightgray;
     border-radius: 30px;
     background-color: white;
-    margin-left: 100px;
+    margin-left: 1rem;
     cursor: pointer;
 }
 
@@ -81,4 +81,28 @@
 
 #trips-link {
     color: black;
+}
+
+.login-link {
+    padding: 1rem 0rem;
+    width: 100%;
+    padding-left: 30px;
+}
+
+.signup-link {
+    padding: 1rem 0rem;
+    width: 100%;
+    padding-left: 30px;
+}
+
+.signup-link > * {
+    color: black;
+}
+
+.login-link:hover {
+    background-color: rgb(245, 245, 245);
+}
+
+.signup-link:hover {
+    background-color: rgb(245, 245, 245);
 }

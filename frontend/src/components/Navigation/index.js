@@ -4,7 +4,8 @@ import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 // import LoginFormModal from '../LoginFormModal';
 import './Navigation.css';
-import { FaAirbnb } from 'react-icons/fa';
+import { FaAirbnb, FaLinkedin, FaGithub } from 'react-icons/fa';
+
 
 function Navigation() {
   const sessionUser = useSelector(state => state.session.user);
@@ -20,7 +21,11 @@ function Navigation() {
           </NavLink>
       </li>
       <li>
-      <ProfileButton user={sessionUser} />
+        <div id='professional-links'>
+          <a href='https://www.linkedin.com/in/joshvaneyken/' target="_blank" rel="noopener noreferrer"><FaLinkedin /></a>
+          <a href='https://github.com/jvaneyken' target="_blank" rel="noopener noreferrer"><FaGithub /></a>
+        </div>
+        <ProfileButton user={sessionUser} />
       </li>
     </ul>
   );
