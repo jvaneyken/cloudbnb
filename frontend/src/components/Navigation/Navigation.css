@@ -28,3 +28,24 @@ ul li {
     font-family:  -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
 }
 
+#professional-links {
+    align-self: center;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#professional-links > a {
+    margin-right: 1rem;
+    display: flex;
+}
+
+#professional-links > a > * {
+    color: lightgrey;
+}
+
+#professional-links > a > *:hover {
+    color: black;
+}
+

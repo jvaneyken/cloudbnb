@@ -6,7 +6,7 @@
     margin-top: 50px;
     margin-left: 50px;
     margin-right: 50px;
-    font-family:  -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
     font-weight: 300;
     text-decoration: none;
 }
@@ -19,8 +19,8 @@
 }
 
 .listings-div {
-    width: 271px;
-    min-width: 250px;
+    /* width: 271px; */
+    /* min-width: 250px; */
     min-height: 257px;
     font-size: 15px;
     margin-bottom: 20px;
@@ -50,11 +50,19 @@
     .listings-container {
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     }
+
+    .listings-div {
+        min-width: 14%;
+    }
 }
 
 @media screen and (max-width: 1561px) {
     .listings-container {
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    }
+
+    .listings-div {
+        min-width: 18%;
     }
 }
 
@@ -62,22 +70,38 @@
     .listings-container {
         grid-template-columns: 1fr 1fr 1fr 1fr;
     }
+
+    .listings-div {
+        min-width: 20%;
+    }
 }
 
-@media screen and (max-width: 947px) {
+@media screen and (max-width: 1040px) {
     .listings-container {
         grid-template-columns: 1fr 1fr 1fr;
     }
-}
 
-@media screen and (max-width: 643px) {
-    .listings-container {
-        grid-template-columns: 1fr 1fr;
+    .listings-div {
+        min-width: 30%;
     }
 }
 
-@media screen and (max-width: 341px) {
+@media screen and (max-width: 830px) {
+    .listings-container {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .listings-div {
+        min-width: 50%;
+    }
+}
+
+@media screen and (max-width: 560px) {
     .listings-container {
         grid-template-columns: 1fr;
+    }
+
+    .listings-div {
+        min-width: 90%;
     }
 }
