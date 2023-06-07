@@ -16,74 +16,117 @@
  - Faker to generate sample user data
 
 ## Code Snippets
-### Utilizing state variables to conditionally display a modal
+### The page for displaying reviews 
 ```js
-const [showReviewCreateModal, setShowReviewCreateModal] = useState(false);
-```
-```js
- return(
-        <>
-        {showReviewCreateModal && (
-            <ReviewCreateModal 
-                listingId={listingId}
-                closeCreateModal={()=> setShowReviewCreateModal(false)}
-                reviews={reviews} />
-        )}
-```
-```js
- { userId !== undefined ?  
-            <div>
-                <button  id='review-button' onClick={()=> setShowReviewCreateModal(prev => !prev)}>Leave a review</button>
-            </div>
-            : null }
-```
+import './ReviewsIndexPage.css';
+import { FaUserCircle, FaStar } from 'react-icons/fa';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchReviews, getReviews } from '../../store/reviews';
+import { useEffect, useState } from 'react';
+import ReviewCreateModal from '../ReviewCreateModal';
+import ReviewEditModal from '../ReviewEditModal';
+import { deleteReview } from '../../store/reviews';
 
-```js
-const ReservationsEditModal = ({currentReservation, closeModal}) => {
-    // const userId = useSelector(state => state.session.user.id);
-    const dispatch = useDispatch()
+// ReviewsIndexPage component
+const ReviewsIndexPage = ({ listingId }) => {
+  // Selecting reviews from the Redux store
+  const reviews = useSelector(getReviews(parseInt(listingId)));
 
-    const [checkInDate, setCheckInDate] = useState('');
-    const [checkOutDate, setCheckOutDate] = useState('');
-    const [numGuests, setNumGuests] = useState('');
+  // Getting the user ID from the Redux store
+  const userId = useSelector(state => state.session.user?.id);
 
+  // Creating a dispatch function
+  const dispatch = useDispatch();
 
-    
-    const handleClick = () => {
-        const reservation = { ...currentReservation, checkInDate, checkOutDate, numGuests };
-        dispatch(updateReservation(reservation));
-        closeModal();
-    }
+  // State for controlling the visibility of the create review modal
+  const [showReviewCreateModal, setShowReviewCreateModal] = useState(false);
 
-    return(
-        <div id="reservation-update-modal-background">
-            <div id='reservation-update-modal'>
-                <div id='reservation-update-modal-content'>
-                <div id='reservation-update-title'>Update your Reservation!</div>
-                    <form id='reservation-update-form' >
-                        <input className='reservation-update-date-input' type="date" onChange={((e)=> setCheckInDate(e.target.value))} placeholder="Check in date" />
-                        <input className='reservation-update-date-input' type="date" onChange={((e)=> setCheckOutDate(e.target.value))} placeholder="Check out date" />
-                        <select onChange={((e)=> setNumGuests(e.target.value))} placeholder="Number of guests" id='reservation-update-select-num-guests'>
-                                <option selected disabled>Select Number of guests</option>
-                                <option value="1" >1</option>
-                                <option value="2" >2</option>
-                                <option value="3" >3</option>
-                                <option value="4" >4</option>
-                                <option value="5" >5</option>
-                                <option value="6" >6</option>
-                                <option value="7" >7</option>
-                                <option value="8" >8</option>
-                                <option value="9" >9</option>
-                                <option value="10">10</option>
-                            </select>
-                        <button id='res-form-update-button' type='button' onClick={handleClick}><span>Update</span></button>
-                    </form>
+  // State for controlling the visibility of the edit review modal
+  const [showReviewEditModal, setShowReviewEditModal] = useState(false);
+
+  // Fetching reviews when the component mounts or when the dispatch function changes
+  useEffect(() => {
+    dispatch(fetchReviews());
+  }, [dispatch]);
+
+  // State for holding the currently selected review for editing
+  const [currentReview, setCurrentReview] = useState({});
+
+  // Function to handle review editing
+  const handleReviewEdit = (review) => {
+    setCurrentReview(review);
+    setShowReviewEditModal(prev => !prev);
+  }
+
+  return (
+    <>
+      {/* Displaying the create review modal if showReviewCreateModal state is true */}
+      {showReviewCreateModal && (
+        <ReviewCreateModal
+          listingId={listingId}
+          closeCreateModal={() => setShowReviewCreateModal(false)}
+          reviews={reviews}
+        />
+      )}
+
+      {/* Displaying the edit review modal if showReviewEditModal state is true */}
+      {showReviewEditModal && (
+        <ReviewEditModal
+          currentReview={currentReview}
+          closeEditModal={() => setShowReviewEditModal(false)}
+        />
+      )}
+
+      {/* Container for displaying the reviews */}
+      <div className='reviews-container'>
+        {reviews && reviews.map((review) => (
+          <div className='review-div' key={review.id}>
+            <div className='reviews-header'>
+              <div>
+                {/* User profile icon */}
+                <FaUserCircle className='review-profile' />
+              </div>
+              <div className='review-user-date-rating'>
+                <div>
+                  {/* Username */}
+                  <div className="review-username">{review.userName}</div>
+                  {/* Review date */}
+                  <div className='review-date'>{new Date(review.createdAt).toLocaleDateString("en-US", {
+                    month: 'long',
+                    year: 'numeric'   
+                  })}</div>
                 </div>
+                <div className='review-rating'>
+                  {/* Star icon */}
+                  <FaStar />
+                  {/* Review rating */}
+                  <div>{review.rating}</div>
+                </div>
+              </div>
             </div>
+            {/* Review body */}
+            <div className='review-body'>{review.body}</div>
+            
+            {/* Edit and delete buttons for the review */}
+            {userId === review.userId ?    
+              <>
+                <button className='review-edit-delete' onClick={() => handleReviewEdit(review)}>Edit</button>
+                <button className='review-edit-delete' onClick={() => dispatch(deleteReview(review.id))}>Delete</button> 
+              </> 
+              : null }
+          </div>
+        ))}
+      </div>
+
+      {/* Displaying the "Leave a review" button if a user is logged in */}
+      {userId !== undefined ?  
+        <div>
+          <button id='review-button' onClick={() => setShowReviewCreateModal(prev => !prev)}>Leave a review</button>
         </div>
-    )
+        : null }
+    </>
+  )
+}
 
-} 
-
-export default ReservationsEditModal;
+export default ReviewsIndexPage;
 ```
