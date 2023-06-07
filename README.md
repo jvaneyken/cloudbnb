@@ -16,7 +16,7 @@
  - Faker to generate sample user data
 
 ## Code Snippets
-- Utilizing state variables to conditionally display a modal
+### Utilizing state variables to conditionally display a modal
 ```js
 const [showReviewCreateModal, setShowReviewCreateModal] = useState(false);
 ```
@@ -87,4 +87,3 @@ const ReservationsEditModal = ({currentReservation, closeModal}) => {
 
 export default ReservationsEditModal;
 ```
-## Code snippets to highlight your best code (markdown code snippets, NOT screenshots)       Technical implementation details with (good-looking) code snippets
