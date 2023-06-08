@@ -6,6 +6,8 @@
 ## Live site 
 - [cloudbnb](https://cloudbnb.onrender.com/)
 
+## About
+
 - Cloudbnb is an Airbnb clone that utilizes the power and flexibility of React to provide users with a seamless experience. This platform enables users to view a range of listings and make reservations in real time. 
 - In a 14 day time frame, my aim was to faithfully recreate the feeling of the well-known Airbnb platform. My goal was to provide visitors with a user-friendly interface and design to ensure a delightful and polished experience.
 
