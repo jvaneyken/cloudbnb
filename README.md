@@ -10,7 +10,7 @@
 - In a 14 day time frame, my aim was to faithfully recreate the feeling of the well-known Airbnb platform. My goal was to provide visitors with a user-friendly interface and design to ensure a delightful and polished experience.
 
 
-## Discussion of technologies used  List of technologies / libraries / APIs used
+## List of technologies used
 - React.js frontend - The user interface was built using the popular javascript library React because of its ability to quickly create fast and modular applications 
  - Rails backend - The backend is powered by Ruby on Rails because its opinionated nature allowed me to focus on core functionality while knowing my application was built on a solid foundation
  - Amazon Web Servies - I used AWS for storing and dynamically retrieving photos because of its reliability ease of use. 
@@ -19,6 +19,12 @@
 
 ## Home Page
 <img src="https://github.com/jvaneyken/cloudbnb/assets/31025639/d16fc975-d0b7-4608-8e05-a5f5fb68d2cb">
+
+## Make a Reservation
+# ![Making a Reservation](readme_images/Make_Reservation.gif)
+
+## Leave a Review
+# ![Leaving a review](readme_images/leave_a_review.gif)
 
 ## Code Snippets
 ### The page for displaying reviews 
