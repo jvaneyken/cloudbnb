@@ -62,6 +62,7 @@
     border: 1px solid lightgrey;
     border-radius: 5px;
     padding: 5px;
+    /* cursor: pointer; */
 }
 
 #reservation-update-select-num-guests {
@@ -69,4 +70,9 @@
     border: 1px solid lightgrey;
     border-radius: 5px;
     padding: 5px 0px;
+    cursor: pointer;
+}
+
+::-webkit-calendar-picker-indicator {
+    cursor: pointer;
 }
