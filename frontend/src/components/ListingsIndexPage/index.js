@@ -14,6 +14,24 @@ const ListingsIndexPage = () => {
         dispatch(fetchListings());
     }, [dispatch])
 
+    const wishlistButtonDefaultStyle = {
+        buttonStyle: {
+            display: 'flex',
+            alignContent: 'center'
+        },
+        iconStyle: { 
+            stroke: 'white',
+            strokeWidth: '1',
+            overflow: 'visible',
+            fill: 'rgba(0, 0, 0, 0.5)',
+            fontSize: '1.4rem'
+        }
+    }
+
+    const wishlistButtonPressedStyle = {
+        fill: '#1FBEFF'
+    }
+
     return(
         <div className="listings-container">
             {listings.map((listing) => (
@@ -28,7 +46,7 @@ const ListingsIndexPage = () => {
                         </div>
                     </Link>
                     <div className='listings-wishlist-button-container'>
-                        <div className="heart-icon"><WishlistButton /></div>
+                        <div className="heart-icon"><WishlistButton style={wishlistButtonDefaultStyle} /></div>
                     </div>
                 </div>
             ))}

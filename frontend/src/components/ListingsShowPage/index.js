@@ -7,6 +7,7 @@ import { useParams } from "react-router-dom";
 import { FaUserCircle } from 'react-icons/fa';
 import ReservationForm from "./ReservationForm";
 import ReviewsIndexPage from "../ReviewsIndexPage";
+import WishlistButton from "../WishlistButton/WishlistButton";
 
 
 const ListingsShowPage = () => {
@@ -27,6 +28,30 @@ const ListingsShowPage = () => {
     if (!listing) {
         return null;
     }
+
+    const wishlistButtonDefaultStyle = {
+        buttonStyle: {
+            display: 'flex',
+            alignItems: 'center'
+        },
+        iconStyle: { 
+            stroke: 'black',
+            strokeWidth: '1',
+            overflow: 'visible',
+            fill: 'rgba(0, 0, 0, 0)',
+            fontSize: '1rem'
+        },
+        textStyle: {
+            fontSize: '1rem',
+            textDecoration: 'underline',
+            marginLeft: '0.7rem'
+        }
+    }
+
+    const wishlistButtonPressedStyle = {
+        fill: '#1FBEFF'
+    }
+
     return(
         <>
             <div className="listing-container">
@@ -34,8 +59,13 @@ const ListingsShowPage = () => {
                     <div className="listing-heading-div">
                         <h1>{listing.heading}</h1>
                     </div>
-                    <div className="listing-p-div">
-                        <p>{listing.location}</p>
+                    <div className="listing-sub-heading" >
+                        <div className="listing-p-div">
+                            <p>{listing.location}</p>
+                        </div>
+                        <div className='listings-show-wishlist-div'>
+                            <WishlistButton style={wishlistButtonDefaultStyle}  text={'Save'} />
+                        </div>
                     </div>
                     <div className="listing-image-grid">
                         <div className="listing-image-div featured">

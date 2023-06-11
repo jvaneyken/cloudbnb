@@ -20,9 +20,23 @@
     margin-bottom: 20px;
 }
 
+.listing-sub-heading {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
 .listing-p-div {
     font-weight: bold;
-    margin-bottom: 30px;
+}
+
+.listings-show-wishlist-div {
+    padding: 8px;
+    border-radius: 10px;
+}
+
+.listings-show-wishlist-div:hover {
+    background-color: rgb(246, 246, 246);
 }
 
 .listing-image-grid {

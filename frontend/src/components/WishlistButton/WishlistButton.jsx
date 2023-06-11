@@ -1,10 +1,13 @@
 import './WishlistButton.css';
 import { BsHeartFill} from 'react-icons/bs';
 
-const WishlistButton = () => {
+const WishlistButton = ({style, text}) => {
     return(
         <>
-            <div className='heart-icon'><BsHeartFill /></div>
+            <button className='wishlist-button' style={style.buttonStyle}>
+                <BsHeartFill style={style.iconStyle} className='heart-icon' />
+                {text && <span style={style.textStyle}>{text}</span>}
+            </button>
         </>
     )
 }

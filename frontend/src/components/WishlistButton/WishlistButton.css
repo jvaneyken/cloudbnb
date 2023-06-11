@@ -1,15 +1,4 @@
-.heart-icon {
-    /* font-size: 1.4rem; */
-    /* color: white; */
-    /* stroke: red;
-    stroke-width: 2; */
-    /* overflow: visible; */
-}
-
-.heart-icon * {
-    font-size: 1.4rem;
-    stroke: white;
-    stroke-width: 1;
-    overflow: visible;
-    fill: rgba(0, 0, 0, 0.5);
+.wishlist-button {
+    background: none;
+    cursor: pointer;
 }
