@@ -13,7 +13,6 @@
     margin-bottom: 30px;
 }
 
-
 /* No trips header  */
 
 .no-trips-container {
@@ -70,11 +69,17 @@
 
 /* Reservations */
 
+.reservations-trips-header {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
 .reservations-container h1 {
     font-weight: 500;
     font-size: 40px;
-    /* border: 0px 30px; */
 }
+
+
 
 .reservations-div {
     display: flex;
@@ -94,7 +99,7 @@
     color: grey;
     font-weight: 200;
 }
-.reservations-details > div:first-child {
+.reservations-title-link > div {
     font-weight: 700;
     color: black;
 }
