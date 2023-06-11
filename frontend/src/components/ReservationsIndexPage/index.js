@@ -12,6 +12,7 @@ import { MdOutlineWavingHand } from 'react-icons/md';
 
 const ReservationsIndexPage = () => {
     const reservations = useSelector((state)=> Object.values(state.reservations));
+    console.log(reservations, "reservations");
     const listings = useSelector(state => state.listings);
     const dispatch = useDispatch();
 
@@ -26,8 +27,6 @@ const ReservationsIndexPage = () => {
     const [currentReservation, setCurrentReservation] = useState({});
 
     const handleReservationEdit = (reservation) => {
-        // set current reservation = to reservation clicked
-        // show modal
         setCurrentReservation(reservation);
         setShowModal(prev => !prev);
     }
@@ -45,11 +44,11 @@ const ReservationsIndexPage = () => {
             )}
                 <div className="reservations-container" >
                     <div>
-                        <div className="trips-heading-div">
-                            <div>
-                                <h1>Trips</h1>
-                            </div>
-                            { reservations.length === 0 && (
+                        <div className="reservations-trips-header">
+                            <h1>Trips</h1>
+                        </div>
+                        {reservations.length === 0 ? (
+                            <div className="trips-heading-div">
                                 <div className="no-trips-container">
                                     <div className="no-trips-header">
                                         <div className="no-trips-content">
@@ -61,40 +60,103 @@ const ReservationsIndexPage = () => {
                                         </div>
                                     </div>
                                 </div>
-                            )}
-                        </div>
-                        <div>
-                            {reservations && reservations.map((reservation) => (
-                                <div className="reservations-div" key={reservation.id}>
-                                    <Link className="reservations-link" to={`listings/${reservation.listingId}`}>
-                                        <img src={!isEmpty(listings) ? listings[reservation.listingId].photoUrls[0] : ""} alt="placeholder"/>
-                                    </Link>
-                                    <div className="reservations-details">
-                                        <div>{reservation.header}</div>
-                                        <div>Check in date: {new Date(reservation.checkInDate).toLocaleDateString("en-US",{
-                                            month: 'long',
-                                            day: 'numeric',
-                                            year: 'numeric'
-                                        })}</div>
-                                        <div>Check out date: {new Date(reservation.checkOutDate).toLocaleDateString("en-US",{
-                                            month: 'long',
-                                            day: 'numeric',
-                                            year: 'numeric'
-                                        })}</div>
-                                        <div>Number of guests: {reservation.numGuests}</div>
-                                    </div>
-                                    <div className="reservations-div-buttons">
-                                        <button onClick={()=> dispatch(deleteReservation(reservation.id))}>Delete</button>
-                                        <button onClick={()=> handleReservationEdit(reservation)}>Update</button>
-                                    </div>
+                            </div>
+                                ) : (
+                                <div>
+                                    {reservations.map((reservation) => (
+                                        <div className="reservations-div" key={reservation.id}>
+                                            <Link className="reservations-link" to={`listings/${reservation.listingId}`}>
+                                                <img src={!isEmpty(listings) ? listings[reservation.listingId].photoUrls[0] : ""} alt="placeholder"/>
+                                            </Link>
+                                            <div className="reservations-details">
+                                                <Link className='reservations-title-link' to={`listings/${reservation.listingId}`}>
+                                                    <div>{reservation.header}</div>
+                                                </Link>
+                                                <div>Check in date: {new Date(reservation.checkInDate).toLocaleDateString("en-US",{
+                                                    month: 'long',
+                                                    day: 'numeric',
+                                                    year: 'numeric',
+                                                    timeZone: 'UTC'
+                                                })}</div>
+                                                <div>Check out date: {new Date(reservation.checkOutDate).toLocaleDateString("en-US",{
+                                                    month: 'long',
+                                                    day: 'numeric',
+                                                    year: 'numeric',
+                                                    timeZone: 'UTC'
+                                                })}</div>
+                                                <div>Number of guests: {reservation.numGuests}</div>
+                                            </div>
+                                            <div className="reservations-div-buttons">
+                                                <button onClick={()=> dispatch(deleteReservation(reservation.id))}>Delete</button>
+                                                <button onClick={()=> handleReservationEdit(reservation)}>Update</button>
+                                            </div>
+                                        </div>
+                                    ))}
                                 </div>
-                            ))}
-                        </div>
+                                )
+                            }
                     </div>
                 </div>
             </>
     )
-
 }
 
 export default ReservationsIndexPage;
+
+
+// {showModal && (
+//     <ReservationsEditModal 
+//         currentReservation={currentReservation}
+//         closeModal={()=> setShowModal(false)} /> 
+// )}
+//     <div className="reservations-container" >
+//         <div>
+//             <div className="trips-heading-div">
+//                 <div>
+//                     <h1>Trips</h1>
+//                 </div>
+//                 { reservations.length === 0 && (
+//                     <div className="no-trips-container">
+//                         <div className="no-trips-header">
+//                             <div className="no-trips-content">
+//                                 <div className="waving-hand-icon"><MdOutlineWavingHand /></div>
+//                                 <h2>No trips booked...yet!</h2>
+//                                 <div id="no-trips-text">Time to dust off your bags and start planning your next adventure</div>
+//                             </div>
+//                             <div className="no-trips-header-image">  
+//                             </div>
+//                         </div>
+//                     </div>
+//                 )}
+//             </div>
+//             <div>
+//                 {reservations && reservations.map((reservation) => (
+//                     <div className="reservations-div" key={reservation.id}>
+//                         <Link className="reservations-link" to={`listings/${reservation.listingId}`}>
+//                             <img src={!isEmpty(listings) ? listings[reservation.listingId].photoUrls[0] : ""} alt="placeholder"/>
+//                         </Link>
+//                         <div className="reservations-details">
+//                             <div>{reservation.header}</div>
+//                             <div>Check in date: {new Date(reservation.checkInDate).toLocaleDateString("en-US",{
+//                                 month: 'long',
+//                                 day: 'numeric',
+//                                 year: 'numeric',
+//                                 timeZone: 'UTC'
+//                             })}</div>
+//                             <div>Check out date: {new Date(reservation.checkOutDate).toLocaleDateString("en-US",{
+//                                 month: 'long',
+//                                 day: 'numeric',
+//                                 year: 'numeric',
+//                                 timeZone: 'UTC'
+//                             })}</div>
+//                             <div>Number of guests: {reservation.numGuests}</div>
+//                         </div>
+//                         <div className="reservations-div-buttons">
+//                             <button onClick={()=> dispatch(deleteReservation(reservation.id))}>Delete</button>
+//                             <button onClick={()=> handleReservationEdit(reservation)}>Update</button>
+//                         </div>
+//                     </div>
+//                 ))}
+//             </div>
+//         </div>
+//     </div>
