@@ -11,6 +11,10 @@
     text-decoration: none;
 }
 
+.listing-parent {
+    position: relative;
+}
+
 .listings-link:link,
 .listings-link:visited,
 .listings-link:hover,
@@ -44,6 +48,13 @@
 
 .listings-details {
     margin-top: 5%;
+}
+
+.listings-wishlist-button-container {
+    /* background-color: red; */
+    position: absolute;
+    top: 5%;
+    right: 7%;
 }
 
 @media screen and (max-width: 1926px) {
