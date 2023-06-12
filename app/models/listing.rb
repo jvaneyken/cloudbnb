@@ -13,4 +13,8 @@ class Listing < ApplicationRecord
     has_many :reviews,
      dependent: :destroy
 
+    has_many :wishlists,
+        foreign_key: :listing_id,
+        dependent: :destroy
+
 end

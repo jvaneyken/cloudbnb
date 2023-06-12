@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     resources :reservations
     # resources :locations, only: [:index]
     resources :reviews
+    resources :wishlists
   end
 
   get '*path', to: 'static_pages#frontend'
