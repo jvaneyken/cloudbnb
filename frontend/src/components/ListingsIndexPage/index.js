@@ -46,7 +46,7 @@ const ListingsIndexPage = () => {
                         </div>
                     </Link>
                     <div className='listings-wishlist-button-container'>
-                        <div className="heart-icon"><WishlistButton style={wishlistButtonDefaultStyle} /></div>
+                        <div className="heart-icon"><WishlistButton style={wishlistButtonDefaultStyle} listingId={listing.id} /></div>
                     </div>
                 </div>
             ))}
