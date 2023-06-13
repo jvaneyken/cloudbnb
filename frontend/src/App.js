@@ -5,7 +5,9 @@ import Navigation from './components/Navigation';
 import ListingsIndexPage from './components/ListingsIndexPage';
 import ListingsShowPage from './components/ListingsShowPage';
 import ReservationsIndexPage from './components/ReservationsIndexPage';
+import WishlistIndexPage from './components/WishlistIndexPage/WishlistIndexPage';
 import { ProtectedRoute } from './components/Routes/Routes';
+
 
 function App() {
   return (
@@ -22,6 +24,7 @@ function App() {
             <ListingsShowPage />
           </Route>
           <ProtectedRoute exact path='/reservations' component={ReservationsIndexPage} />
+          <ProtectedRoute exact path='/wishlists' component={WishlistIndexPage} />
         </Switch>
     </>
   );

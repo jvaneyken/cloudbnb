@@ -1,0 +1,40 @@
+.wishlists-container {
+    font-family:  -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+    margin-left: 20px;
+}
+
+.wishlists-header {
+    margin-top: 40px;
+    margin-bottom: 60px;
+}
+
+.wishlists-container h1 {
+    font-weight: 500;
+    font-size: 40px;
+}
+
+.no-wishlists-container h2 {
+    margin-bottom: 20px;
+    color: #272727;
+    font-size: 1.5rem;
+}
+
+.no-wishlists-container p {
+    margin-bottom: 20px;
+    color: 303030;
+}
+
+.no-wishlists-container button {
+    color: white;
+    background-color: #222222;
+    padding: 14px 24px;
+    border-radius: 10px;
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+}
+
+.no-wishlists-container button:hover {
+    color: white;
+    background-color: black;
+}

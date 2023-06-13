@@ -79,6 +79,10 @@
     border-bottom: 1px solid lightgrey;
 }
 
+#wishlist-link-li {
+    border-bottom: 1px solid lightgrey;
+}
+
 #trips-link {
     color: black;
 }
