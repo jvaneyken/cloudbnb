@@ -30,7 +30,7 @@ export const clearWishlists = () => ({
 export const fetchWishlists = () => async dispatch => {
     const response = await csrfFetch(`/api/wishlists`);
     if (response.ok) {
-        const { wishlists } = await response.json();
+        const wishlists = await response.json();
         if (wishlists) {
             dispatch(receiveWishlists(wishlists));
         }
@@ -46,7 +46,7 @@ export const createWishlist = wishlist => async dispatch => {
         body: JSON.stringify({wishlist})
     });
     if (response.ok) {
-        const { wishlist } = await response.json();
+        const { wishlist} = await response.json();
         dispatch(receiveWishlist(wishlist));
     }
 }

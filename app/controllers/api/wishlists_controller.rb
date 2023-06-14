@@ -3,7 +3,7 @@ class Api::WishlistsController < ApplicationController
     before_action :require_logged_in
 
     def index
-        @wishlists = Wishlist.where(user_id: current_user.id)
+        @wishlists = current_user.wishlists
         render :index
     end
 
