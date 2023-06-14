@@ -40,7 +40,7 @@ export const fetchWishlists = () => async dispatch => {
 export const createWishlist = wishlist => async dispatch => {
     const response = await csrfFetch(`/api/wishlists/`, {
         method: 'POST',
-        Headers: {
+        headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({wishlist})

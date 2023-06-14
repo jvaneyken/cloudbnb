@@ -16,11 +16,10 @@ const ListingsIndexPage = () => {
 
     useEffect(()=> {
         if (user) {
+            dispatch(fetchWishlists());
         }
-        dispatch(fetchWishlists());
         dispatch(fetchListings());
-
-    }, [dispatch])
+    }, [dispatch, user])
 
     const wishlistButtonDefaultStyle = {
         buttonStyle: {
@@ -66,11 +65,9 @@ const ListingsIndexPage = () => {
                             </div>
                         </div>
                     </Link>
-                        {wishlists.map((wishlist) => (
-                            <div className='listings-wishlist-button-container'>
-                                <div className="heart-icon"><WishlistButton style={wishlistListingIds.includes(listing.id) ? wishlistButtonPressedStyle : wishlistButtonDefaultStyle} listingId={listing.id} /></div>
-                            </div>
-                        ))}
+                    <div className='listings-wishlist-button-container'>
+                        <div className="heart-icon"><WishlistButton style={wishlistListingIds.includes(listing.id) ? wishlistButtonPressedStyle : wishlistButtonDefaultStyle} listingId={listing.id} /></div>
+                    </div>
                 </div>
             ))}
         </div>
