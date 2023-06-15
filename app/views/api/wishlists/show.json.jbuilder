@@ -3,4 +3,5 @@ json.wishlist do
     json.header @wishlist.listing.heading
     json.price @wishlist.listing.price
     json.numBeds @wishlist.listing.num_beds
+    json.photoUrls @wishlist.listing.photos.map {|url| url.url}
 end

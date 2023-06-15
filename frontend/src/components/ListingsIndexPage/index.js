@@ -10,8 +10,7 @@ import WishlistButton from "../WishlistButton/WishlistButton";
 const ListingsIndexPage = () => {
     const listings = useSelector(state => Object.values(state.listings));
     const user = useSelector(state => state.session.user);
-    const wishlists = useSelector(state => Object.values(state.wishlists))
-    console.log(wishlists, "wishlists");
+    const wishlists = useSelector(state => Object.values(state.wishlists));
     const dispatch = useDispatch();
 
     useEffect(()=> {
