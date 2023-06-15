@@ -24,6 +24,10 @@ class User < ApplicationRecord
     dependent: :destroy,
     inverse_of: :user
 
+  has_many :wishlists,
+    foreign_key: :user_id,
+    dependent: :destroy
+
   before_validation :ensure_session_token
 
   def self.find_by_credentials(credential, password)

@@ -6,6 +6,7 @@ import { GiHamburgerMenu } from 'react-icons/gi';
 import './ProfileButton.css'
 import LoginFormModal from "../LoginFormModal";
 import { NavLink } from "react-router-dom";
+import { clearWishlists } from "../../store/wishlists";
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -35,6 +36,7 @@ function ProfileButton({ user }) {
   const logout = (e) => {
     e.preventDefault();
     dispatch(sessionActions.logout());
+    dispatch(clearWishlists());
   };
 
   // const handleLoginClick = () => {
@@ -52,6 +54,7 @@ function ProfileButton({ user }) {
           <li>{user.username}</li>
           <li>{user.email}</li>
           <li id="trips-link-li"><NavLink id="trips-link" to="/reservations" >Trips</NavLink></li>
+          <li id="wishlist-link-li"><NavLink id="trips-link" to="/wishlists" >Wishlist</NavLink></li>
           <li>
             <button onClick={logout}>Log Out</button>
           </li>

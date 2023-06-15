@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchListings } from "../../store/listings";
+import { fetchWishlists } from "../../store/wishlists";
 import './ListingsIndexPage.css'
 // import placeHolderImage from '../../assets/deric-0zy0QwHwZy8-unsplash.jpg'
 import {Link} from 'react-router-dom';
@@ -8,11 +9,16 @@ import WishlistButton from "../WishlistButton/WishlistButton";
 
 const ListingsIndexPage = () => {
     const listings = useSelector(state => Object.values(state.listings));
+    const user = useSelector(state => state.session.user);
+    const wishlists = useSelector(state => Object.values(state.wishlists));
     const dispatch = useDispatch();
 
     useEffect(()=> {
+        if (user) {
+            dispatch(fetchWishlists());
+        }
         dispatch(fetchListings());
-    }, [dispatch])
+    }, [dispatch, user])
 
     const wishlistButtonDefaultStyle = {
         buttonStyle: {
@@ -23,14 +29,27 @@ const ListingsIndexPage = () => {
             stroke: 'white',
             strokeWidth: '1',
             overflow: 'visible',
-            fill: 'rgba(0, 0, 0, 0.5)',
+            fill: 'rgba(0, 0, 0, 0.1)',
             fontSize: '1.4rem'
         }
     }
 
     const wishlistButtonPressedStyle = {
-        fill: '#1FBEFF'
+        buttonStyle: {
+            display: 'flex',
+            alignContent: 'center'
+        },
+        iconStyle: { 
+            stroke: 'white',
+            strokeWidth: '1',
+            overflow: 'visible',
+            // fill: 'rgb(255,56,92)',
+            fill: '#1FBEFF',
+            fontSize: '1.4rem'
+        }
     }
+
+    const wishlistListingIds = wishlists.map((wishlist) => wishlist.listingId);
 
     return(
         <div className="listings-container">
@@ -46,7 +65,7 @@ const ListingsIndexPage = () => {
                         </div>
                     </Link>
                     <div className='listings-wishlist-button-container'>
-                        <div className="heart-icon"><WishlistButton style={wishlistButtonDefaultStyle} /></div>
+                        <div className="heart-icon"><WishlistButton style={wishlistListingIds.includes(listing.id) ? wishlistButtonPressedStyle : wishlistButtonDefaultStyle} listingId={listing.id} /></div>
                     </div>
                 </div>
             ))}

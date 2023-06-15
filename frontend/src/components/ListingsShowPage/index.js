@@ -8,18 +8,24 @@ import { FaUserCircle } from 'react-icons/fa';
 import ReservationForm from "./ReservationForm";
 import ReviewsIndexPage from "../ReviewsIndexPage";
 import WishlistButton from "../WishlistButton/WishlistButton";
+import { fetchWishlists } from "../../store/wishlists";
 
 
 const ListingsShowPage = () => {
     const dispatch = useDispatch();
     const { listingId } = useParams();
+    const user = useSelector(state => state.session.user);
     const listing = useSelector(state => state.listings[listingId]);
+    const wishlists = useSelector(state => Object.values(state.wishlists))
     const [i, setI] = useState(0);
 
     useEffect(()=> {
+        if (user) {
+            dispatch(fetchWishlists());
+        }
         dispatch(fetchListing(listingId));
         // dispatch(fetchReviews);
-    }, [dispatch, listingId])
+    }, [dispatch, listingId, user])
 
     const handleImageClick = (index) => {
         setI(index + i)
@@ -49,8 +55,25 @@ const ListingsShowPage = () => {
     }
 
     const wishlistButtonPressedStyle = {
-        fill: '#1FBEFF'
+        buttonStyle: {
+            display: 'flex',
+            alignItems: 'center'
+        },
+        iconStyle: { 
+            stroke: 'white',
+            strokeWidth: '1',
+            overflow: 'visible',
+            fill: '#1FBEFF',
+            fontSize: '1rem'
+        },
+        textStyle: {
+            fontSize: '1rem',
+            textDecoration: 'underline',
+            marginLeft: '0.7rem'
+        }
     }
+
+    const wishlistListingIds = wishlists.map((wishlist) => wishlist.listingId);
 
     return(
         <>
@@ -64,7 +87,7 @@ const ListingsShowPage = () => {
                             <p>{listing.location}</p>
                         </div>
                         <div className='listings-show-wishlist-div'>
-                            <WishlistButton style={wishlistButtonDefaultStyle}  text={'Save'} />
+                            <WishlistButton style={wishlistListingIds.includes(listing.id) ? wishlistButtonPressedStyle : wishlistButtonDefaultStyle}  text={wishlistListingIds.includes(listing.id) ? 'Saved' : 'Save'} listingId={listingId}/>
                         </div>
                     </div>
                     <div className="listing-image-grid">

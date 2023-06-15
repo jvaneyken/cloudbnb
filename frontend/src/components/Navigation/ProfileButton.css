@@ -47,6 +47,7 @@
     cursor: default;
     font-family:  -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
     overflow: hidden;
+    z-index: 100;
 }
 
 .profile-dropdown li {
@@ -76,6 +77,10 @@
 
 #trips-link-li {
     border-top: 1px solid lightgrey;
+    border-bottom: 1px solid lightgrey;
+}
+
+#wishlist-link-li {
     border-bottom: 1px solid lightgrey;
 }
 
