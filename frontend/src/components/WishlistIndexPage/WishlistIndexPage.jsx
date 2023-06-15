@@ -66,6 +66,7 @@ const WishlistIndexPage = () => {
                                 <div className="wishlists-div">
                                     <img src={wishlist.photoUrls[0]} className="wishlists-image" alt="placeholder"/>
                                     <div className="wishlists-details">
+                                        <p><span>{wishlist.header}</span></p>
                                         <p><span>{wishlist.numBeds} beds</span></p>
                                         <p><span>${wishlist.price}</span> night</p>
                                     </div>
