@@ -94,6 +94,10 @@
     padding-left: 30px;
 }
 
+.login-link > * {
+    color: black;
+}
+
 .signup-link {
     padding: 1rem 0rem;
     width: 100%;

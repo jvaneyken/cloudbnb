@@ -29,7 +29,7 @@ const ListingsIndexPage = () => {
             stroke: 'white',
             strokeWidth: '1',
             overflow: 'visible',
-            fill: 'rgba(0, 0, 0, 0.1)',
+            fill: 'rgba(0, 0, 0, 0.5)',
             fontSize: '1.4rem'
         }
     }

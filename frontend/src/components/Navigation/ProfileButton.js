@@ -10,7 +10,6 @@ import { clearWishlists } from "../../store/wishlists";
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
-  const [signIn, setSignIn] = useState(false);
   
   const openMenu = () => {
     if (showMenu) return;
@@ -21,27 +20,27 @@ function ProfileButton({ user }) {
     if (!showMenu) return;
 
     const closeMenu = (event) => {
-      const profileDropdown = document.getElementsByClassName('profile-dropdown')[0];
+      const profileDropdown = document.querySelector('.profile-dropdown');
       if (profileDropdown && !profileDropdown.contains(event.target)) {
         setShowMenu(false);
       }
     };
 
     document.addEventListener('click', closeMenu);
-    
   
     return () => document.removeEventListener("click", closeMenu);
   }, [showMenu, user]);
+
+  const handleNavLinkClick = () => {
+    setShowMenu(false);
+  };
 
   const logout = (e) => {
     e.preventDefault();
     dispatch(sessionActions.logout());
     dispatch(clearWishlists());
+    setShowMenu(false);
   };
-
-  // const handleLoginClick = () => {
-
-  // }
 
   return (
     <>
@@ -53,8 +52,8 @@ function ProfileButton({ user }) {
         <ul className="profile-dropdown">
           <li>{user.username}</li>
           <li>{user.email}</li>
-          <li id="trips-link-li"><NavLink id="trips-link" to="/reservations" >Trips</NavLink></li>
-          <li id="wishlist-link-li"><NavLink id="trips-link" to="/wishlists" >Wishlist</NavLink></li>
+          <li id="trips-link-li"><NavLink id="trips-link" to="/reservations" onClick={handleNavLinkClick} >Trips</NavLink ></li>
+          <li id="wishlist-link-li"><NavLink id="trips-link" to="/wishlists" onClick={handleNavLinkClick} >Wishlist</NavLink></li>
           <li>
             <button onClick={logout}>Log Out</button>
           </li>
@@ -63,10 +62,10 @@ function ProfileButton({ user }) {
       { !user && showMenu && (
         <ul className="profile-dropdown">
           <div className="login-link">
-            <NavLink to="/session" signIn={setSignIn(true)} >Log In</NavLink>
+            <NavLink to="/login" onClick={handleNavLinkClick} >Log In</NavLink>
           </div>
           <div className="signup-link">
-            <NavLink to="/session" signIn={setSignIn(false)} >Sign Up</NavLink>
+            <NavLink to="/signup" onClick={handleNavLinkClick} >Sign Up</NavLink>
           </div>
         </ul>
       )}
