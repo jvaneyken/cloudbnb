@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
-
 const ReservationForm = ({ listing }) => {
     const user = useSelector(state => state.session.user);
     let userId;
@@ -25,15 +24,29 @@ const ReservationForm = ({ listing }) => {
     const [checkInDate, setCheckInDate] = useState('');
     const [checkOutDate, setCheckOutDate] = useState('');
     const [numGuests, setNumGuests] = useState('');
+    const [errors, setErrors] = useState([]);
 
 
     
     const handleClick = () => {
         if (user) {
             reservation = { ...reservation, userId, checkInDate, checkOutDate, numGuests, listingId: listing.id }
-            dispatch(createReservation(reservation));
-            let path = '/reservations';
-            history.push(path);
+            dispatch(createReservation(reservation))
+            .then(() => history.push('/reservations'))
+            .catch(async (res) => {
+                let data;
+                try {
+                  // .clone() essentially allows you to read the response body twice
+                  data = await res.clone().json();
+                } catch {
+                  data = await res.text(); // Will hit this case if the server is down
+                }
+                if (data?.errors) setErrors(data.errors);
+                else if (data) setErrors([data]);
+                else setErrors([res.statusText]);
+              });
+        } else {    
+            history.push('/login', { from: history.location });
         }
     }
 
@@ -47,6 +60,9 @@ const ReservationForm = ({ listing }) => {
                     </div>
                     <div>
                         <form >
+                            <ul className="errors-ul">
+                                {errors.map(error => <li key={error}>{error}</li>)}
+                            </ul>
                             <input className='reservation-date-input' type="date" onChange={((e)=> setCheckInDate(e.target.value))} placeholder="Check in date" />
                             <input className='reservation-date-input' type="date" onChange={((e)=> setCheckOutDate(e.target.value))} placeholder="Check out date" />
                             {/* <input type="text" onChange={((e)=> setNumGuests(e.target.value))} placeholder="Number of guests" /> */}

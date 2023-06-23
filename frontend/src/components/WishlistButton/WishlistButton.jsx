@@ -22,7 +22,7 @@ const WishlistButton = ({style, text, listingId}) => {
                 const wishlist = { userId,  listingId };
                 dispatch(createWishlist(wishlist));
             }
-        }    
+        }
     }
 
     return(
