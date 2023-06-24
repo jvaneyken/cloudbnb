@@ -41,6 +41,7 @@ const ReservationForm = ({ listing }) => {
                 } catch {
                   data = await res.text(); // Will hit this case if the server is down
                 }
+                console.log(data, "this is the data");
                 if (data?.errors) setErrors(data.errors);
                 else if (data) setErrors([data]);
                 else setErrors([res.statusText]);
@@ -61,13 +62,12 @@ const ReservationForm = ({ listing }) => {
                     <div>
                         <form >
                             <ul className="errors-ul">
-                                {errors.map(error => <li key={error}>{error}</li>)}
+                                {errors.map((error, index) => <li key={index}>{error}</li>)}
                             </ul>
                             <input className='reservation-date-input' type="date" onChange={((e)=> setCheckInDate(e.target.value))} placeholder="Check in date" />
-                            <input className='reservation-date-input' type="date" onChange={((e)=> setCheckOutDate(e.target.value))} placeholder="Check out date" />
-                            {/* <input type="text" onChange={((e)=> setNumGuests(e.target.value))} placeholder="Number of guests" /> */}
+                            <input className='reservation-date-input' type="date" onChange={((e)=> setCheckOutDate(e.target.value))} placeholder="Check out date" min={checkInDate === '' ? '' : checkInDate} />
                             <select onChange={((e)=> setNumGuests(e.target.value))} placeholder="Number of guests" id='reservation-select-num-guests'>
-                                <option selected disabled>Select Number of guests</option>
+                                <option selected disabled>Select number of guests</option>
                                 <option value="1" >1</option>
                                 <option value="2" >2</option>
                                 <option value="3" >3</option>

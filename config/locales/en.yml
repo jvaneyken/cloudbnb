@@ -30,4 +30,11 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  activerecord:
+    errors:
+      models:
+        reservation:
+          attributes:
+            num_guests:
+              format: '%{message}'
+              blank: "Please select the number of guests"

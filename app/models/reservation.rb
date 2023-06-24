@@ -1,6 +1,5 @@
 class Reservation < ApplicationRecord
     validates :user_id, :check_in_date, :check_out_date, :num_guests, presence: true
-    validates :num_guests, numericality: { in: 1..10, message: "There must be between 1 and 10 guests" }
     validate :check_out_date_after_check_in_date
   
     belongs_to :user
