@@ -38,7 +38,6 @@
     top: 70px;
     right: 60px;
     width: 20%;
-    height: auto;
     border-radius: 10px;
     box-shadow: 1px 0px 3px lightgrey;
     background-color: white;
@@ -48,15 +47,13 @@
     font-family:  -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
     overflow: hidden;
     z-index: 100;
+    align-items: flex-start;
+
 }
 
 .profile-dropdown li {
-    /* min-height: 10rem; */
     padding: 1rem 0rem;
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
     padding-left: 30px;
 }
 
@@ -66,7 +63,6 @@
 
 .profile-dropdown button {
     border: none;
-    /* background-color: rgba(255, 255, 255, 0); */
     background: none;
     cursor: pointer;
 	color: inherit;
@@ -84,7 +80,7 @@
     border-bottom: 1px solid lightgrey;
 }
 
-#trips-link {
+.trips-link {
     color: black;
 }
 

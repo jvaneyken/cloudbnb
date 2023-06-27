@@ -23,6 +23,7 @@ const ReservationsEditModal = ({currentReservation, closeModal}) => {
         <div id="reservation-update-modal-background">
             <div id='reservation-update-modal'>
                 <div id='reservation-update-modal-content'>
+                    <button className='reservation-update-cancel-button' onClick={() => closeModal()} >X</button>
                 <div id='reservation-update-title'>Update your Reservation!</div>
                     <form id='reservation-update-form' >
                         <input className='reservation-update-date-input' type="date" onChange={((e)=> setCheckInDate(e.target.value))} value={checkInDate} />

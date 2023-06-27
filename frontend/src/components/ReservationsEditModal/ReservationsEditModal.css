@@ -29,6 +29,23 @@
   width: 20%;
 }
 
+.reservation-update-cancel-button {
+    /* display: inline-block; */
+    width: 25px;
+    height: 25px;
+    border-radius: 100px;
+    font-size: 1rem;
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    cursor: pointer;
+    padding-top: 2px;
+}
+
+.reservation-update-cancel-button:hover {
+    background-color: lightgrey;
+}
+
 #reservation-update-form {
     display: flex;
     flex-direction: column;
