@@ -65,7 +65,7 @@ const ReservationsIndexPage = () => {
                                     {reservations.map((reservation) => (
                                         <div className="reservations-div" key={reservation.id}>
                                             <Link className="reservations-link" to={`listings/${reservation.listingId}`}>
-                                                <img src={!isEmpty(listings) ? listings[reservation.listingId].photoUrls[0] : ""} alt="placeholder"/>
+                                                <img src={isEmpty(listings) === false ? listings[reservation.listingId].photoUrls[0] : ""} alt="placeholder"/>
                                             </Link>
                                             <div className="reservations-details">
                                                 <Link className='reservations-title-link' to={`listings/${reservation.listingId}`}>
