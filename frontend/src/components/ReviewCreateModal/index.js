@@ -5,9 +5,6 @@ import { createReview } from '../../store/reviews';
 
 const ReviewCreateModal = ({listingId, closeCreateModal, reviews}) => {
     const userId = useSelector(state => state.session.user.id);
-    // const username = useSelector(state => state.session.user.userName)
-    
-
     const dispatch = useDispatch();
     let review = {
         // username: username,
@@ -19,8 +16,23 @@ const ReviewCreateModal = ({listingId, closeCreateModal, reviews}) => {
 
     const [rating, setRating] = useState('');
     const [body, setBody] = useState('');
+    const [errors, setErrors] = useState([]);
 
     const handleClick = () => {
+        const validationErrors = [];
+
+        if (rating === '') {
+          validationErrors.push('Rating cannot be blank');
+        }
+  
+        if (body === '') {
+          validationErrors.push('Body of review cannot be blank');
+        }
+  
+        if (validationErrors.length > 0) {
+          setErrors(validationErrors);
+          return;
+        }
         const newReview = {...review, rating, body}
         dispatch(createReview(newReview));
         closeCreateModal();
@@ -45,6 +57,9 @@ const ReviewCreateModal = ({listingId, closeCreateModal, reviews}) => {
                     <div id='review-create-modal'>
                         <div id='review-create-modal-content'>
                             <div id='review-create-title'>Leave a Review!</div>
+                            <ul className="review-create-errors-ul">
+                                {errors.map((error, index) => <li key={index}>{error}</li>)}
+                            </ul>
                             <select onChange={((e)=> setRating(e.target.value))} id='review-create-rating'>
                                 <option selected disabled>Choose a rating</option>
                                 <option value="1" >1</option>

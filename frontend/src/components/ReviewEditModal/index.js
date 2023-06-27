@@ -22,6 +22,7 @@ const ReviewEditModal = ({currentReview, closeEditModal}) => {
             <div id='review-edit-modal-background'>
                 <div id='review-edit-modal'>
                     <div id='review-edit-modal-content'>
+                    <button className='review-edit-cancel-button' onClick={() => closeEditModal()} >X</button>
                         <div id='review-edit-title'>Edit your Review!</div>
                         <select value={rating} onChange={((e)=> setRating(e.target.value))} id='review-edit-rating'>
                             <option selected disabled>Choose a rating</option>
@@ -33,7 +34,7 @@ const ReviewEditModal = ({currentReview, closeEditModal}) => {
                         </select>
                         <textarea value={body} onChange={((e)=> setBody(e.target.value))}
                          id='review-edit-text'/>
-                        <button onClick={handleClick}>Update</button>
+                        <button id='review-edit-submit-button' onClick={handleClick}>Update</button>
                     </div>
                 </div>
             </div>
