@@ -1,4 +1,4 @@
-ul {
+.navigation-ul {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -6,7 +6,7 @@ ul {
     border-bottom: 1px solid lightgrey;
 }
 
-ul li {
+.navigation-ul li {
     width: 300px;
     display: flex;
     justify-content: center;

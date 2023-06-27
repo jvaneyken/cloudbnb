@@ -11,7 +11,7 @@ function Navigation() {
   const sessionUser = useSelector(state => state.session.user);
 
   return (
-    <ul >
+    <ul className='navigation-ul' >
       <li>
           <NavLink exact to="/">
             <div className='logo-div'>

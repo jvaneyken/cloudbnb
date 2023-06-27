@@ -7,49 +7,44 @@ import { useHistory } from 'react-router-dom';
 
 const ReservationForm = ({ listing }) => {
     const user = useSelector(state => state.session.user);
-    let userId;
-    if (user) {
-        userId = user.id;
-    }
     const history = useHistory();
     const dispatch = useDispatch();
-    let reservation = {
-        userId: '',
-        checkInDate: '',
-        checkOutDate: '',
-        numGuests: '',
-        listingId: ''
-    }
 
     const [checkInDate, setCheckInDate] = useState('');
     const [checkOutDate, setCheckOutDate] = useState('');
     const [numGuests, setNumGuests] = useState('');
     const [errors, setErrors] = useState([]);
-
-
     
     const handleClick = () => {
         if (user) {
-            reservation = { ...reservation, userId, checkInDate, checkOutDate, numGuests, listingId: listing.id }
+            const validationErrors = [];
+
+            if (checkInDate === '') {
+              validationErrors.push('Check In date cannot be empty');
+            }
+      
+            if (checkOutDate === '') {
+              validationErrors.push('Check Out date cannot be empty');
+            }
+      
+            if (numGuests === '') {
+              validationErrors.push('Please select the number of guests');
+            }
+      
+            if (validationErrors.length > 0) {
+              setErrors(validationErrors);
+              return;
+            }
+
+            const reservation = { userId: user.id, checkInDate, checkOutDate, numGuests, listingId: listing.id }
             dispatch(createReservation(reservation))
-            .then(() => history.push('/reservations'))
-            .catch(async (res) => {
-                let data;
-                try {
-                  // .clone() essentially allows you to read the response body twice
-                  data = await res.clone().json();
-                } catch {
-                  data = await res.text(); // Will hit this case if the server is down
-                }
-                console.log(data, "this is the data");
-                if (data?.errors) setErrors(data.errors);
-                else if (data) setErrors([data]);
-                else setErrors([res.statusText]);
-              });
+            history.push('/reservations');
         } else {    
             history.push('/login', { from: history.location });
         }
     }
+
+    const guestOptions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
     return(
         <>
@@ -61,23 +56,18 @@ const ReservationForm = ({ listing }) => {
                     </div>
                     <div>
                         <form >
-                            <ul className="errors-ul">
+                            <ul className="reservation-errors-ul">
                                 {errors.map((error, index) => <li key={index}>{error}</li>)}
                             </ul>
-                            <input className='reservation-date-input' type="date" onChange={((e)=> setCheckInDate(e.target.value))} placeholder="Check in date" />
-                            <input className='reservation-date-input' type="date" onChange={((e)=> setCheckOutDate(e.target.value))} placeholder="Check out date" min={checkInDate === '' ? '' : checkInDate} />
+                            <input required className='reservation-date-input' type="date" onChange={((e)=> setCheckInDate(e.target.value))}  />
+                            <input required className='reservation-date-input' type="date" onChange={((e)=> setCheckOutDate(e.target.value))} min={checkInDate === '' ? '' : checkInDate} />
                             <select onChange={((e)=> setNumGuests(e.target.value))} placeholder="Number of guests" id='reservation-select-num-guests'>
                                 <option selected disabled>Select number of guests</option>
-                                <option value="1" >1</option>
-                                <option value="2" >2</option>
-                                <option value="3" >3</option>
-                                <option value="4" >4</option>
-                                <option value="5" >5</option>
-                                <option value="6" >6</option>
-                                <option value="7" >7</option>
-                                <option value="8" >8</option>
-                                <option value="9" >9</option>
-                                <option value="10">10</option>
+                                {guestOptions.map((option) => (
+                                    <option key={option} value={option}>
+                                    {option}
+                                    </option>
+                                ))}
                             </select>
                             <button id='res-form-button' type='button' onClick={handleClick}><span>Reserve</span></button>
                         </form>
