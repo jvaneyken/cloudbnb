@@ -12,7 +12,6 @@ import { MdOutlineWavingHand } from 'react-icons/md';
 
 const ReservationsIndexPage = () => {
     const reservations = useSelector((state)=> Object.values(state.reservations));
-    console.log(reservations, "reservations");
     const listings = useSelector(state => state.listings);
     const dispatch = useDispatch();
 

@@ -14,6 +14,32 @@
     border-radius: 10px;
 }
 
+.reservation-errors-ul {
+    /* border: 1px solid blue; */
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* justify-content: center; */
+    /* align-items: end; */
+    font-size: 0.7rem;
+    color: red;
+    /* padding: 0px; */
+    /* margin: 0px; */
+    margin-bottom: 5px;
+  }
+
+.reservation-errors-ul li {
+    /* border: 1px solid green; */
+    /* padding: 0px; */
+    margin-left: 15px;
+    /* display: inline-block; */
+    line-height: 1.3em;
+    list-style: circle;
+}
+  
+.reservation-errors-ul:empty {
+    display: none;
+}
+
 #res-form-button {
     width: 100%;
     padding-top: 15px;
