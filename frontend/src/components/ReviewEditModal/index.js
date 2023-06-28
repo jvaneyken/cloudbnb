@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { updateReview } from '../../store/reviews';
 
 const ReviewEditModal = ({currentReview, closeEditModal}) => {
-// console.log(currentReview.body, "current review body")
     const dispatch = useDispatch();
 
     const [rating, setRating] = useState(currentReview.rating);

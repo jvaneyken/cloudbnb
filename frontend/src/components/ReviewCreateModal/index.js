@@ -56,6 +56,7 @@ const ReviewCreateModal = ({listingId, closeCreateModal, reviews}) => {
                 <div id='review-create-modal-background'>
                     <div id='review-create-modal'>
                         <div id='review-create-modal-content'>
+                        <button className='review-create-cancel-button' onClick={() => closeCreateModal()} >X</button>
                             <div id='review-create-title'>Leave a Review!</div>
                             <ul className="review-create-errors-ul">
                                 {errors.map((error, index) => <li key={index}>{error}</li>)}
@@ -71,7 +72,7 @@ const ReviewCreateModal = ({listingId, closeCreateModal, reviews}) => {
                             <textarea onChange={((e)=> setBody(e.target.value))}
                             id='review-create-text'
                             />
-                            <button onClick={handleClick}>Leave Review</button>
+                            <button id='review-create-submit-button' onClick={handleClick}>Leave Review</button>
                         </div>
                     </div>
                 </div>
