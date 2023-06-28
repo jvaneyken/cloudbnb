@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
 import "./LoginForm.css";
@@ -39,10 +39,12 @@ function LoginForm() {
     setRedirect(true);
   }
 
-  if (redirect) {
-    const { from } = location.state || { from: { pathname: '/' }};
-    history.replace(from);
-  }
+  useEffect(() => {
+    if (redirect) {
+      const { from } = location.state || { from: { pathname: '/' }};
+      history.replace(from);
+    }
+  }, [redirect, history, location.state]);
 
   return (
     <>
