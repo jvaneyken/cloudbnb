@@ -46,6 +46,13 @@ const ReservationForm = ({ listing }) => {
 
     const guestOptions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
+    const getCurrentDate = () => {
+        let currentDate = '';
+        const d = new Date();
+        currentDate += d.getFullYear() + "-" + (String(d.getMonth() + 1).padStart(2, '0')) + "-" + String(d.getDate()).padStart(2, '0');
+        return currentDate;
+      }      
+
     return(
         <>
             <div className="outer-div">
@@ -59,7 +66,7 @@ const ReservationForm = ({ listing }) => {
                             <ul className="reservation-errors-ul">
                                 {errors.map((error, index) => <li key={index}>{error}</li>)}
                             </ul>
-                            <input required className='reservation-date-input' type="date" onChange={((e)=> setCheckInDate(e.target.value))}  />
+                            <input required className='reservation-date-input' type="date" onChange={((e)=> setCheckInDate(e.target.value))} min={getCurrentDate()}  />
                             <input required className='reservation-date-input' type="date" onChange={((e)=> setCheckOutDate(e.target.value))} min={checkInDate === '' ? '' : checkInDate} />
                             <select onChange={((e)=> setNumGuests(e.target.value))} placeholder="Number of guests" id='reservation-select-num-guests'>
                                 <option selected disabled>Select number of guests</option>
