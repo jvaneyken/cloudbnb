@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cloudbnb</title>
+    <meta property="og:title" content="Cloudbnb" />
+    <meta property="og:image" content= "<%= image_url( '../../../frontend/src/assets/jve_portfolio_cloudbnb.png') %>" />
+    <meta property="og:description" content="A full stack Airbnb clone built in a 14 day time frame and leveraging the power of React.js and Ruby on Rails" />
+    <meta property="og:url" content="https://cloudbnb.onrender.com/" />
+    <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= csrf_meta_tags %>
+</head>
+<body>
+
+<%= yield %>
+
+</body>
+</html>
