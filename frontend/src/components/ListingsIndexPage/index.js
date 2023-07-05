@@ -1,13 +1,15 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchListings } from "../../store/listings";
 import { fetchWishlists } from "../../store/wishlists";
 import './ListingsIndexPage.css'
-// import placeHolderImage from '../../assets/deric-0zy0QwHwZy8-unsplash.jpg'
+import placeHolderImage from '../../assets/deric-0zy0QwHwZy8-unsplash.jpg'
 import {Link} from 'react-router-dom';
 import WishlistButton from "../WishlistButton/WishlistButton";
 
 const ListingsIndexPage = () => {
+    const [imageError, setImageError] = useState(false);
+
     const listings = useSelector(state => Object.values(state.listings));
     const user = useSelector(state => state.session.user);
     const wishlists = useSelector(state => Object.values(state.wishlists));
@@ -51,13 +53,22 @@ const ListingsIndexPage = () => {
 
     const wishlistListingIds = wishlists.map((wishlist) => wishlist.listingId);
 
+    const handleImageError = () => {
+        setImageError(true);
+    };
+
     return(
         <div className="listings-container">
             {listings.map((listing) => (
                 <div className='listing-parent' key={listing.id}>
                     <Link className="listings-link" to={`listings/${listing.id}`} >
                         <div className="listings-div">
-                            <img src={listing.photoUrls[0]} className="listings-image" alt="placeholder"/>
+                            <img
+                                src={imageError ? placeHolderImage : listing.photoUrls[0]}
+                                onError={handleImageError}
+                                className="listings-image"
+                                alt="placeholder"
+                            />
                             <div className="listings-details">
                                 <p><span>{listing.location}</span></p>
                                 <p><span>${listing.price}</span> night</p>
